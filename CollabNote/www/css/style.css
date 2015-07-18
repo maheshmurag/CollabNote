@@ -29,17 +29,20 @@ ul {
 }
 
 .backgroundweb {
-    background: -webkit-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    
+   /* background: -webkit-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);*/
     /* Chrome 10+, Saf5.1+ */
     
-    background: -moz-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /*background: -moz-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* FF3.6+ */
     
-    background: -ms-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+   /* background: -ms-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* IE10 */
     
-    background: -o-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+   /* background: -o-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* Opera 11.10+ */
+    
+    background:#FFA62F;
 }
 
 input::-webkit-input-placeholder {
