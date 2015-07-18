@@ -18,12 +18,20 @@
                     <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Account()" transition="none"><b>Account</b></a>
                 </div>
             <h1 style="color:white;">Capture</h1>
-            <div class="row" style="width:50%;">
+            <div class="row">
                 <div class="col col-50">
                     <h1 style="color:white;">Upload Files</h1>
                     <button class="button button-assertive button-full" style="width:100%;">
                         Upload
                     </button>
+                    <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                    ^
+                    <!--
+                    <form method="post" action="file-upload-1.htm" name="submit" enctype="multipart/form-data">
+                        <input type="file" name="fileField"><br/><br/>
+                        <input type="submit" name="submit" value="Submit">
+                    </form>
+-->
                 </div>
                 <div class="col" style="border-left: 1px solid #C0C0C0; border-radius:1px; height:200px;">
 
