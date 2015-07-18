@@ -11,28 +11,43 @@
     <ion-view nav-transition="none" ng-init="checkLogged()" hide-nav-bar="true" class="backgroundweb">
 
         <center>
-            <div class="button-bar quillcolor" style="width:100%; padding-left:30%; padding-right:10%; background-color:rgba(255, 255, 255, .7); color:black;">
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="webHome()" transition="none"><b>Home</b></a>
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Capture()" transition="none"><b>Capture</b></a>
-                    <a  nav-transition="none" class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Account()" transition="none"><b>Account</b></a>
+            <div class="button-bar quillcolor" style="width:100%; padding-left:50%; padding-right:0%;">
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="webHome()" transition="none"><b>Home</b></a>
                 </div>
-            <h1 style="color:white;">Capture</h1>
-            <div class="row">
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a>
+                </div>
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
+                </div>
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a>
+                </div>
+            </div>
+            <h3 style="color:white;">Upload</h3>
+            <button class="btn btn-primary btn-xl" style="width:50%;">
+                Upload File
+            </button>
+            <h3 style="color:white;">Or Insert Link</h3>
+
+            <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:50%;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search">
+            </label>
+            <h1 style="color:white;">And Analyze</h1>
+
+            <!--<div class="row">
                 <div class="col col-50">
                     <h1 style="color:white;">Upload Files</h1>
                     <button class="button button-assertive button-full" style="width:100%;">
                         Upload
                     </button>
                     <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
-                    ^
-                    <!--
+                    ^-->
+            <!--
                     <form method="post" action="file-upload-1.htm" name="submit" enctype="multipart/form-data">
                         <input type="file" name="fileField"><br/><br/>
                         <input type="submit" name="submit" value="Submit">
                     </form>
 -->
-                </div>
+            <!--</div>
                 <div class="col" style="border-left: 1px solid #C0C0C0; border-radius:1px; height:200px;">
 
                 </div>
@@ -46,8 +61,8 @@
                     </div>
                 </div>
 
-            </div>
-            <button class="button button-balanced button-full" style="width:50%; border:1px solid #41A317;">
+            </div>-->
+            <button class="btn btn-primary btn-xl" style="width:50%; background-color:#33CC00; border:1px solid #41A317;">
                 Go!
             </button>
         </center>

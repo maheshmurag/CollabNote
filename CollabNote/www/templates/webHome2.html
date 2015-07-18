@@ -12,36 +12,35 @@
 
         <center>
             <div>
-                 <div class="button-bar quillcolor" style="width:100%; padding-left:30%; padding-right:10%; background-color:rgba(255, 255, 255, .7); color:black;">
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="webHome()" transition="none"><b>Home</b></a>
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Capture()" transition="none"><b>Capture</b></a>
-                    <a  nav-transition="none" class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
-                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Account()" transition="none"><b>Account</b></a>
+                 <div class="button-bar quillcolor" style="width:100%; padding-left:50%; padding-right:0%;">
+                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl"  ng-click="webHome()" transition="none"><b>Home</b></a></div>
+                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a></div>
+                    <div style="padding:10px;"><a  nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a></div>
+                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a></div>
                 </div>
                 
 
-      <h1 style="font-family: 'Raleway'; font-size:55px; padding-top:5%; color:white; width:60%;"><b>Auxquill</b></h1>
-                <p style="font-size:20px; color:white; width:60%;"><b>A student note agregator. We give you the best ntoes from studetns around the world for the piece of text you're reading.</b>
+      <h1 style="font-family: 'Raleway'; font-size:55px; padding-top:5%; color:white; width:60%;">Auxquill</h1>
+                <p style="font-size:20px; color:white; width:60%;">A student note agregator. We give you the best ntoes from studetns around the world for the piece of text you're reading.
                 </p>
-                <div class="row" style="width:60%; color:white;">
-              
-                    <div class="col">
+              <div style="padding-left:20%;">
+                    <div class="col-lg-3 col-md-6" style="color:white;">
                         <img src="http://quillapp.io/introcamera.png" style="width:25%; height:25%;">
                         <h1 style="color:white;">Upload</h1>
                         <p>Upload the files and information you want analyzed.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-3 col-md-6" style="color:white;">
                         <img src="http://quillapp.io/intronote.png" style="width:25%; height:25%;">
                         <h1 style="color:white;">Analyze</h1>
                         <p>Our algorithms will analyze the information you uploaded and provide you with the most important notes and summaries.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-3 col-md-6" style="color:white;">
                         <img src="https://s-media-cache-ak0.pinimg.com/originals/b7/c0/2b/b7c02b413a641483ee0f43ea0a695dc1.png" style="width:25%; height:25%;">
                         <h1 style="color:white;">Improve</h1>
                         <p>Upvote and downvote the helpful summaries and notes. You can also add in your own notes to be added to the total queue. </p>
                     </div>
-
-                </div>
+</div>
+                
             </div>
         </center>
         <script id="webHome.html" type="text/ng-template">
