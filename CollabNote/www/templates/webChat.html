@@ -1,0 +1,75 @@
+<ion-view ng-init="callFunction()" hide-nav-bar="true" style="background-image:url('http://quillapp.io/MIT.png')">
+    <ion-content>
+        <div class="button-bar quillcolor" style="width:100%; padding-right:85%;">
+            <a class="button" style="background-color:transparent; border:0px solid white; color:white; font-size:20px;" ng-click="back()"><b>Back</b></a>
+        </div>
+
+        <ion-list>
+            <ion-item style="background-color:transparent; border:0px solid transparent; margin:0px; width:80%; padding-left:20%;">
+                <div class="list card" style="background-color:transparent;">
+
+                    <div class="item item-avatar">
+                        <img src="http://msharboursclass.weebly.com/uploads/4/1/9/6/4196620/harcourt273.jpg">
+                        <h2>{{ photos[myIndex].summary }}</h2>
+                        <p>{{ photos[myIndex].time | date }}</p>
+                    </div>
+
+                    <div class="item item-body">
+                        <p>
+                            <b>Summary</b> {{ photos[myIndex].summary }}
+                        </p>
+                        <p>
+                            <b>Text</b> {{ photos[myIndex].text }}
+                        </p>
+
+                        <div class="item item-text-wrap" style="opacity:.9;">
+
+                            <div id="list" ng-repeat="note in notes">
+                                <ul class="my-nav">
+                                    <li style="font-family: 'Raleway', 'Hind', sans-serif; font-size:0.9em; text-align:left; color:#CC3300 ; font-size:17px;"><b>Notes: </b>{{ note.text }}
+                                    </li>
+                                </ul>
+                                <div id="list" ng-repeat="sentence in note.sentences track by $index">
+                                    <div ng-if="sentence">
+                                        <ul class="my-nav" style=" padding-left:20px;">
+                                            <li style="font-family: 'Raleway', 'Hind', sans-serif; font-size:0.9em; text-align:left; color:#CC3300 ; font-size:15px;">
+                                                {{ sentence }}</li>
+                                        </ul>
+                                    </div>
+                                    <div ng-if="!sentence">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p>
+                            <a href="#" class="subdued">1 Upvote</a>
+                            <a href="#" class="subdued">5 Downvotes</a>
+                        </p>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-icon-left">
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-thumbsup"></i> Accurate
+                        </a>
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-thumbsdown"></i> Inaccurate
+                        </a>
+                        <div class="col">
+                            <label class="checkbox checkbox-balanced">
+
+                                <input type="checkbox" style="padding-left:0px; width:30px;" ng-model="checkedArr[$index]" ng-change="checkShared($index)" />
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+            </ion-item>
+        </ion-list>
+
+
+    </ion-content>
+
+</ion-view>

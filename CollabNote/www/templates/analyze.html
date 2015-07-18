@@ -1,0 +1,78 @@
+<ion-view ng-init="callFunction()" hide-nav-bar="true" style="background-image:url('http://quillapp.io/MIT.png')" nav-transition="none">
+    <ion-content>
+        <div class="button-bar quillcolor" style="width:100%; padding-left:30%; padding-right:10%; background-color:rgba(255, 255, 255, .7); color:black;">
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="webHome()" transition="none"><b>Home</b></a>
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Capture()" transition="none"><b>Capture</b></a>
+                    <a  nav-transition="none" class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Account()" transition="none"><b>Account</b></a>
+                </div>
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class="row">
+
+            <div class="col">
+                <div style="width:80%; padding:0; padding-left:20%; padding-bottom:0px; margin:0;">
+                    <button class="button button-large button-balanced button-full ion-checkmark-round" style="width:100%; padding:0; margin:0;" ng-click="share()">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <!--
+            <div class="col col-15">
+                <div style="width:100%; padding:0; margin:0;">
+                    <button class="button button-large button-balanced button-outline ion-checkmark-round" style="width:100%; padding:0; margin:0;" ng-click="testgo()">
+                        Tsfadsa
+                    </button>
+                </div>
+            </div>
+-->
+        </div>
+
+        <ion-list style="width:60%;">
+            <ion-item ng-repeat="photo in photos" style="background-color:transparent; width:80%; padding-left:20%; border:0px solid transparent; margin:0px;">
+                <a href="#/webchat/{{$index}}" style="text-decoration:none;background-color:transparent;">
+                    <div class="list card" style="background-color:transparent;">
+
+                        <div class="item item-avatar">
+                            <img src="http://msharboursclass.weebly.com/uploads/4/1/9/6/4196620/harcourt273.jpg">
+                            <h2>{{ photo.summary }}</h2>
+                            <p>{{ photo.time | date }}</p>
+                        </div>
+
+                        <div class="item item-body">
+                            <p>
+                                {{ photo.summary }}
+                            </p>
+                            <p>
+                                <a href="#" class="subdued">1 Like</a>
+                                <a href="#" class="subdued">5 Comments</a>
+                            </p>
+                        </div>
+
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i> Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsdown"></i> Dislike
+                            </a>
+                            <div class="col">
+                                <label class="checkbox checkbox-balanced">
+
+                                    <input type="checkbox" style="padding-left:0px; width:30px;" ng-model="checkedArr[$index]" ng-change="checkShared($index)" />
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </a>
+            </ion-item>
+        </ion-list>
+
+
+    </ion-content>
+
+</ion-view>

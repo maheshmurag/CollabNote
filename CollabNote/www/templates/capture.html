@@ -1,0 +1,48 @@
+<!--<ion-view left-buttons="leftButtons" right-buttons="rightButtons">
+    <ion-slide-box on-slide-changed="slideChanged(index)">
+        <ion-slide ng-repeat="slide in slides">
+            <h3>{{ slide.title }}</h3>
+            <p>{{ slide.text }}</p>
+        </ion-slide>
+    </ion-slide-box>
+</ion-view>-->
+<!-- where the initial view template will be rendered -->
+<ion-nav-view animation="no-animation" nav-transition="none">
+    <ion-view nav-transition="none" ng-init="checkLogged()" hide-nav-bar="true" class="backgroundweb">
+
+        <center>
+            <div class="button-bar quillcolor" style="width:100%; padding-left:30%; padding-right:10%; background-color:rgba(255, 255, 255, .7); color:black;">
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="webHome()" transition="none"><b>Home</b></a>
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Capture()" transition="none"><b>Capture</b></a>
+                    <a  nav-transition="none" class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
+                    <a nav-transition="none"  class="button" style="background-color:transparent; border:0px solid white; color:black; font-size:20px;" ng-click="Account()" transition="none"><b>Account</b></a>
+                </div>
+            <h1 style="color:white;">Capture</h1>
+            <div class="row" style="width:50%;">
+                <div class="col col-50">
+                    <h1 style="color:white;">Upload Files</h1>
+                    <button class="button button-assertive button-full" style="width:100%;">
+                        Upload
+                    </button>
+                </div>
+                <div class="col" style="border-left: 1px solid #C0C0C0; border-radius:1px; height:200px;">
+
+                </div>
+                <div class="col col-50">
+                    <h1 style="color:white;">Insert Link</h1>
+                    <div class="list list-inset" style="background-color:rgba(255, 255, 255, .3); margin:10px;">
+                        <label class="item item-input" style="background-color:rgba(255, 255, 255, .3);">
+                            <i class="icon ion-search placeholder-icon"></i>
+                            <input type="text" placeholder="Search">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <button class="button button-balanced button-full" style="width:70%;">
+                Go!
+            </button>
+        </center>
+        </ion-slide-box>
+    </ion-view>
+</ion-nav-view>

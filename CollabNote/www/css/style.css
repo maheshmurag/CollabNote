@@ -1,1 +1,310 @@
 /* Empty. Add your own CSS if you like */
+
+body {
+    background-color: white;
+    background-repeat: no-repeat;
+    font-family: 'Raleway', 'Hind', sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style-type: disc;
+    margin: 0px;
+    padding: 0px;
+}
+
+#quill_header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.backgroundweb {
+    background: -webkit-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background: -moz-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* FF3.6+ */
+    
+    background: -ms-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* IE10 */
+    
+    background: -o-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* Opera 11.10+ */
+}
+
+input::-webkit-input-placeholder {
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.webHome {
+    background: -webkit-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background: -moz-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* FF3.6+ */
+    
+    background: -ms-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* IE10 */
+    
+    background: -o-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Opera 11.10+ */
+    
+    height: 100%;
+}
+
+.quillcolor {
+    color: -webkit-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Chrome 10+, Saf5.1+ */
+    
+    color: -moz-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* FF3.6+ */
+    
+    color: -ms-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* IE10 */
+    
+    color: -o-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Opera 11.10+ */
+}
+
+.wrapper {
+    color: #fff;
+    background-color: transparent;
+    width: 100%;
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input {
+    background-color: transparent;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    width: 100%;
+    border-radius: 2px;
+    border: none;
+    padding-left: 0px;
+    height: 0px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
+.input-wrapper:after {
+    background-color: transparent;
+    position: absolute;
+    border: 1px solid #fff;
+    border-top: none;
+    margin-left: 5%;
+    margin-right: auto;
+    height: 0px;
+    width: 85%;
+    bottom: 6px;
+    left: 0;
+    content: "";
+}
+/*.introsignup{
+  background-color:transparent;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid #fff;
+  padding-left: 0px;
+  height: 0px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+}*/
+
+blockquote {
+    width: 90% !important;
+    border-color: #FFC299 !important;
+    border-width: 5px 5px 5px 5px !important;
+    /*border-style: solid solid solid solid !important;*/
+    
+    padding: 5px 5px 5px 5px !important;
+    /*background-color: #eee !important;*/
+}
+/**
+.smallp{
+        font-size: 1em; 
+        font-family: 'Raleway', 'Hind', sans-serif;
+}
+.bigp{
+        font-size: 1.8em; 
+        font-family: 'Raleway', 'Hind', sans-serif;
+}
+<<<<<<< Updated upstream
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+#logo {
+  margin: 30px 0px;
+}
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+*/
+
+.slider {
+    height: 100%;
+}
+
+.slider-slide {
+    padding-top: 80px;
+    color: white;
+    text-align: center;
+    /**background-image: url("http://quillapp.io/step1.png");*/
+    /**
+  background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
+    /**  background:    -moz-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* FF3.6+ */
+    /**  background:     -ms-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* IE10 */
+    /** background:      -o-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Opera 11.10+ */
+    /**  background:         linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* W3C */
+    /**background: -moz-linear-gradient(45deg, rgba(255,153,51,1) 0%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+    /**background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,153,51,1)), color-stop(100%, rgba(0,128,128,1))); /* safari4+,chrome */
+    /**background: -webkit-linear-gradient(45deg, rgba(255,153,51,1) 0%, rgba(0,128,128,1) 100%); /* safari5.1+,chrome10+ */
+    /**background: -o-linear-gradient(45deg, rgba(255,153,51,1) 0%, rgba(0,128,128,1) 100%); /* opera 11.10+ */
+    /**background: -ms-linear-gradient(45deg, rgba(255,153,51,1) 0%, rgba(0,128,128,1) 100%); /* ie10+ */
+    /**background: -moz-linear-gradient(45deg, rgba(255,153,51,1) 58%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+    /**background: -webkit-gradient(linear, left bottom, right top, color-stop(58%, rgba(255,153,51,1)), color-stop(100%, rgba(0,128,128,1))); /* safari4+,chrome */
+    /**background: -webkit-linear-gradient(45deg, rgba(255,153,51,1) 58%, rgba(0,128,128,1) 100%); /* safari5.1+,chrome10+ */
+    /**background: -o-linear-gradient(45deg, rgba(255,153,51,1) 58%, rgba(0,128,128,1) 100%); /* opera 11.10+ */
+    /**background: -ms-linear-gradient(45deg, rgba(255,153,51,1) 58%, rgba(0,128,128,1) 100%); /* ie10+ */
+    /**background: linear-gradient(45deg, rgba(255,153,51,1) 58%, rgba(0,128,128,1) 100%); /* w3c */
+    
+    background: -webkit-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background: -moz-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* FF3.6+ */
+    
+    background: -ms-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* IE10 */
+    
+    background: -o-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Opera 11.10+ */
+    /*background:         linear-gradient(90deg, #FF6600  10%, #F3A183 90%); /* W3C */
+    
+    font-family: 'Raleway', 'Hind', sans-serif;
+}
+
+.intropage {
+    background: -webkit-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background: -moz-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* FF3.6+ */
+    
+    background: -ms-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* IE10 */
+    
+    background: -o-linear-gradient(90deg, #FF6600 10%, #FF8533 90%);
+    /* Opera 11.10+ */
+}
+
+.slider-slide #subtext {
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#logo {
+    margin: 50px 0px;
+}
+
+#list {
+    width: 300px;
+    margin: 30px auto;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    font-family: 'Raleway';
+    /*font-weight: bold;*/
+}
+
+#list ol li {
+    text-align: center;
+}
+
+.button.ng-hide {
+    display: none;
+}
+
+.homeimg {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 30%;
+    height: 30%;
+}
+
+#file {
+    display: none;
+}
+
+h1 {
+    font-family: 'Raleway', 'Hind', sans-serif;
+    margin: 0px;
+    padding: 10px;
+}
+
+p {
+    font-family: 'Raleway', 'Hind', sans-serif;
+}
+
+input {
+    font-family: 'Raleway', 'Hind', sans-serif;
+}
+
+h3 {
+    font-family: 'Raleway', 'Hind', sans-serif;
+}
+
+.my-nav {
+    list-style-type: disc;
+    margin: 0px;
+    padding: 0px;
+}
+/* Empty. Add your own CSS if you like */
