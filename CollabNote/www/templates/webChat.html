@@ -1,6 +1,6 @@
 <ion-view ng-init="callFunc()" hide-nav-bar="true" class="backgroundweb">
     <ion-content>
-        <div  style="width:100%; padding-left:20%;">
+        <div style="width:100%; padding-left:20%;">
             <a class="btn btn-primary btn-xl" style="margin:16px;" ng-click="back()"><b>Back</b></a>
         </div>
 
@@ -18,8 +18,8 @@
                         <p style="font-size:16px; line-height:120%;">
                             <b>Summary:</b> {{ photos[myIndex].summary }}
                             <br>
-                            <a class="icon ion-plus" style="color:#33CC00;"> <span style="color:#33CC00;">219</span> </a>
-                            <a class="icon ion-minus"> <span style="color:#FF9980  ">29</span> </a>
+                            <a > <img src="http://quillapp.io/plus.png" style="height:25px; width:25px;"></a>
+                            <a > <img src="http://quillapp.io/minus.png" style="height:25px; width:25px;"></a>
                         </p>
 
                         <p style="font-size:16px; line-height:120%;">
@@ -30,19 +30,20 @@
                             </p>
                             <li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.text }}
                                 <br>
-                                <a class="icon ion-plus" style="color:#33CC00;"> <span style="color:#33CC00;">82</span> </a>
-                                <a class="icon ion-minus"> <span style="color:#FF9980  ">28</span> </a>
+                                  <a > <img src="http://quillapp.io/plus.png" style="height:25px; width:25px;"></a>
+                            <a > <img src="http://quillapp.io/minus.png" style="height:25px; width:25px;"></a>
                             </li>
                         </ul>
-                        <p><b>Add Notes: </b>
-                            <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:80%;">
-                                <i class="icon placeholder-icon"></i>
-                                <input type="text" placeholder="Add your note here" style="background-color:#D0D0D0 ; height:50px; border-radius:5px;">
-                                <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px; ">
-                                   Add!
-                                </button>
-                            </label>
-                        </p>
+                        <p><b>Add Notes: </b> </p>
+                        <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:100%; padding-right:7%;">
+                            <i class="icon placeholder-icon"></i>
+                            <input type="text" style="background-color:#D0D0D0 ; height:50px; border-radius:5px; color:white; font-size:17px; padding-left:10px;" placeholder="Add your note here" >
+                            <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px;">
+                                Add!
+                            </button>
+                        </label>
+
+
                         <!--<div ng-controller="CollapseDemoCtrl">
                             <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
                             <hr>
