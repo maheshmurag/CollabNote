@@ -188,6 +188,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 // return notes;
                 var words = text.split(" ");
                 var relevance = (Math.log(words.length/500) / Math.LN10) + 0.9;
+                //Mathematically modeling the number of notes - kush
                 console.log("relevance for index: " + relevance);
 
                 var notes = [];
@@ -202,8 +203,9 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                               $http.get("https://api.idolondemand.com/1/api/sync/findrelatedconcepts/v1?text="+ rawnotes.keywords[i].text + "&apikey=a46a1fd3-0815-41db-a757-d6d981de0fc6")
                                 .then(function (resp2) {
                                     rawnotes2 =  resp2.data;
-                                    notes[notesIndex].relatedConcepts[0] = rawnotes2.entities[0];
-                                    notes[notesIndex].relatedConcepts[1] = rawnotes2.entities[1];
+                                    for (var j = 0; j < 4; j++) {
+                                        notes[notesIndex].relatedConcepts.push(rawnotes2.entities[j]);
+                                    }
                                 }, function (err) {
                                     console.error('ERR', JSON.stringify(err));
                                 });
