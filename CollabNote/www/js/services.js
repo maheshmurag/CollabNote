@@ -193,7 +193,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                     .then(function (resp) {
                        rawnotes = resp.data;
                          for (var i = 0; i < rawnotes.keywords.length; i++) {
-                             if (rawnotes.keywords[i].relevance > 0.5) {
+                             if (rawnotes.keywords[i].relevance > 0.8) {
                               notes.push(rawnotes.keywords[i]);
                               var notesIndex = notes.length - 1;
                               notes[notesIndex].relatedConcepts = [];
