@@ -227,7 +227,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
 
                 var notes = [];
 
-                alert(text);
+                //alert(text);
                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                     .then(function (resp) {
                         rawnotes = resp.data;
