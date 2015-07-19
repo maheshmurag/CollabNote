@@ -228,7 +228,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 var notes = [];
 
                 //alert(text);
-                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
+                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json")
                     .then(function (resp) {
                         rawnotes = resp.data;
                         //go through the top ones to store and put them in the notes array
@@ -240,7 +240,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                             }
                         }
 
-                         $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&keywords=1")
+                         $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&keywords=1")
                             .then(function (resp2) {
                                 rawnotes2 = resp2.data;
                                 for (var x = 0; x < notes.length; x++) {
@@ -296,7 +296,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 var positive = [];
                 var negative = [];
                 var neutral = [];
-                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&sentiment=1")
+                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&sentiment=1")
                  .then(function (resp) {
                     rawnotes = resp.data;
                     for (var i = 0; i < rawnotes.entities.length; i++) {
