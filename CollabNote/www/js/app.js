@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         })
         .state('webchat', {
             url: '/webchat/:chatId',
-            templateUrl: 'templates/webchat.html',
+            templateUrl: 'templates/webChat.html',
             controller: 'webchatController'
         });
     // if none of the above states are matched, use this as the fallback

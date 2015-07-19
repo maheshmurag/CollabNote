@@ -145,61 +145,89 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
         var ret = {};
         return {
             getNotes: function (text) {
-                //alert('im getting notes');
+               // var notes = [];
+
+                // $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedConcepts?apikey=f0c8d163d48994fedc40c29311f3c068e2d531f2&text=" + text + "&outputMode=json")
+                //     .then(function (resp) {
+                //         console.log('Success');
+                //         rawnotes = resp.data;
+
+                //         for (var i = 0; i < rawnotes.concepts.length; i++) {
+                //             if (rawnotes.concepts[i].relevance > 0.6) {
+                //                 var words = text.split(".");
+                //                 console.log("Concept: " + rawnotes.concepts[i].text + " relevance: " + rawnotes.concepts[i].relevance);
+                //                 notes.push(rawnotes.concepts[i]);
+                //                 var notesIndex = notes.length - 1;
+                //                 notes[notesIndex].sentences = [];
+                //                 console.log("i: " + i + " concept: " + notes[notesIndex].text);
+                //                 for (var j = 0; j < words.length; j++) {
+                //                     if (words[j].indexOf(rawnotes.concepts[i].text) > -1) {
+                //                         notes[notesIndex].sentences[j] = words[j].replace(rawnotes.concepts[i].text, "");
+                //                         notes[notesIndex].sentences[j].replace("  ", " ");
+                //                     }
+                //                 }
+                //                 $http.get("http://dragonflysearch.com/api/search-codeday.php?q=" + notes[notesIndex].text)
+                //                     .then(function (resp) {
+                //                         if (resp.data.Facts) {
+                //                             dflynotes = resp.data;
+                //                             //for (var x = 0; x < 1; x++) {
+                //                             notes[notesIndex].sentences.push(dflynotes.Facts[0]);
+                //                             //console.log('hi');
+                //                             //}
+                //                         }
+                //                     }, function (err) {
+                //                         if (!resp.data.facts) {
+                //                             console.log('no info on ' + notes[notesIndex].text + ' this yet :)');
+                //                         }
+                //                     })
+                //             }
+                //         }
+                //     }, function (err) {
+                //         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
+                //     });
+                // return notes;
+                var words = text.split(".");
+
                 var notes = [];
-                //text = localArr[index].text;
-                //alert(localArr[index].text);
-                //console.log(text);
-                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedConcepts?apikey=f0c8d163d48994fedc40c29311f3c068e2d531f2&text=" + text + "&outputMode=json")
+                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedKeywords?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                     .then(function (resp) {
-                        console.log('Success');
-                        rawnotes = resp.data;
-                        //console.log(rawnotes.concepts[0].text);
-                        //tmpasdf2 = resp.data;
-                        for (var i = 0; i < rawnotes.concepts.length; i++) {
-                            // if (rawnotes.concepts[i].occurrences > 4) {
-                            if (rawnotes.concepts[i].relevance > 0.6) {
-                                var words = text.split(".");
-                                console.log("Concept: " + rawnotes.concepts[i].text + " relevance: " + rawnotes.concepts[i].relevance);
-                                notes.push(rawnotes.concepts[i]);
-                                var notesIndex = notes.length - 1;
-                                //notes[notesIndex].text = the name of the concept
-                                //pull from dragonfly
-                                notes[notesIndex].sentences = [];
-                                console.log("i: " + i + " concept: " + notes[notesIndex].text);
+                       rawnotes = resp.data;
+                         for (var i = 0; i < rawnotes.keywords.length; i++) {
+                             if (rawnotes.keywords[i].relevance > 0.5) {
+                              notes.push(rawnotes.keywords[i]);
+                              var notesIndex = notes.length - 1;
+                              notes[notesIndex].relatedConcepts = [];
+                              $http.get("https://api.idolondemand.com/1/api/sync/findrelatedconcepts/v1?text="+ rawnotes.keywords[i].text + "&apikey=a46a1fd3-0815-41db-a757-d6d981de0fc6")
+                                .then(function (resp2) {
+                                    rawnotes2 =  resp2.data;
+                                    notes[notesIndex].relatedConcepts[0] = rawnotes2.entities[0];
+                                    notes[notesIndex].relatedConcepts[1] = rawnotes2.entities[1];
+                                }, function (err) {
+                                    console.error('ERR', JSON.stringify(err));
+                                });
+                             }
+                         }
+                         
+                    
 
-                                for (var j = 0; j < words.length; j++) {
-                                    //console.log("concept: " + rawnotes.concepts[i].text + " sentence: " + words[j]);
-                                    if (words[j].indexOf(rawnotes.concepts[i].text) > -1) {
-                                        notes[notesIndex].sentences[j] = words[j].replace(rawnotes.concepts[i].text, "");
-                                        notes[notesIndex].sentences[j].replace("  ", " ");
-                                        //console.log('hi');
-                                        //console.log("i " + i + " j " + j + "concept: " + notes[i].sentences[j]);
-                                    }
-                                }
+                    // $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
+                    //     .then(function (resp) {
+                    //         rawnotes = resp.data;
+                    //         for (var j = 0; j < rawnotes.entities.length; j++) {
+                    //             if (rawnotes.entities[j].relevance > 0.9) {
+                    //                 if ()
+                    //             }
+                    //         }
 
-                                //console.log(notes[notesIndex].text);
+                    //     }, function (err) {
+                    //         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
+                    //     });
 
-                                //dragon fly integrated - kush
-                                $http.get("http://dragonflysearch.com/api/search-codeday.php?q=" + notes[notesIndex].text)
-                                    .then(function (resp) {
-                                        if (resp.data.Facts) {
-                                            dflynotes = resp.data;
-                                            //for (var x = 0; x < 1; x++) {
-                                            notes[notesIndex].sentences.push(dflynotes.Facts[0]);
-                                            //console.log('hi');
-                                            //}
-                                        }
-                                    }, function (err) {
-                                        if (!resp.data.facts) {
-                                            console.log('no info on ' + notes[notesIndex].text + ' this yet :)');
-                                        }
-                                    })
-                            }
-                        }
+
                     }, function (err) {
                         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                     });
+    
                 return notes;
             },
             getNumConcepts: function () {

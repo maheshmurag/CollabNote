@@ -622,10 +622,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
     $scope.numConcepts;
 
     $scope.callFunc = function () {
-        alert("Call function");
+        //alert("Call function");
         var index = $scope.myIndex;
         $scope.photos = photos.queryNewEntries();
-        $scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
+        //$scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
         var tmpvar = noteCreation.getNotes($scope.photos[index].text);
         $scope.notes = tmpvar;
         var tmpvar = ["Europe of the Scientific Revolution"];

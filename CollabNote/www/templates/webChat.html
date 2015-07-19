@@ -1,4 +1,4 @@
-<ion-view ng-init="callFunction()" hide-nav-bar="true"  class="backgroundweb">
+<ion-view ng-init="callFunc()" hide-nav-bar="true" class="backgroundweb">
     <ion-content>
         <div class="button-bar quillcolor" style="width:100%; padding-right:85%;">
             <a class="button" style="background-color:transparent; border:0px solid white; color:white; font-size:20px;" ng-click="back()"><b>Back</b></a>
@@ -16,19 +16,24 @@
 
                     <div class="item item-body">
                         <p style="font-size:16px; line-height:120%;">
-                            <b>Summary:</b> {{ photos[myIndex].summary }} <br>
-                            <a class="icon ion-plus"> <span style="color:#FF9980  ">219</span> </a> <a class="icon ion-minus"> <span style="color:#FF9980  ">29</span> </a>
+                            <b>Summary:</b> {{ photos[myIndex].summary }}
+                            <br>
+                            <a class="icon ion-plus"> <span style="color:#FF9980  ">219</span> </a>
+                            <a class="icon ion-minus"> <span style="color:#FF9980  ">29</span> </a>
                         </p>
-                        
+
                         <p style="font-size:16px; line-height:120%;">
                             <b>Text:</b> {{ photos[myIndex].text }}
                         </p>
-
-                        <div class="item item-text-wrap" style="opacity:.9;">
+                        <ul class="my-nav" style="padding-left:20px;">
+                            <p><b>Notes: </b></p><li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.text }}
+                            </li>
+                        </ul>
+                        <!--<div class="item item-text-wrap" style="opacity:.9;">
 
                             <div id="list" ng-repeat="note in notes">
                                 <ul class="my-nav">
-                                    <li style="font-family: 'Raleway', 'Hind', sans-serif; font-size:0.9em; text-align:left; color:#CC3300 ; font-size:17px;"><b>Notes: </b>{{ note.text }}
+                                    <li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif; text-align:left; color:#CC3300;">{{ note.text }}
                                     </li>
                                 </ul>
                                 <div id="list" ng-repeat="sentence in note.sentences track by $index">
@@ -43,7 +48,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div>-->
                         <p>
                             <a href="#" class="subdued">5 Upvote</a>
                             <a href="#" class="subdued">1 Downvotes</a>
@@ -57,7 +62,7 @@
                         <a class="tab-item" href="#">
                             <i class="icon ion-thumbsdown"></i> Inaccurate
                         </a>
-                        
+
                     </div>
 
                 </div>
