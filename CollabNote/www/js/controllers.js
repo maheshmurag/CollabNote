@@ -1,7 +1,13 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'ui.router', 'tangcloud'])
 
 .controller('AccountCtrl', function ($scope, $state, $rootScope, $ionicHistory, $stateParams, $ionicModal, $cordovaGoogleAnalytics) {
-
+    $scope.checkLogged = function () {
+        console.log("calling checkLogged")
+        if ($rootScope.user == null) {
+            console.log("checkLogged: logging user out!")
+            $scope.logout();
+        }
+    }
     if ($stateParams.clear) {
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
@@ -31,17 +37,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
 })
 
 .controller('webHomeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
-        $scope.checkLogged = function () {
-            $scope.startApp();
-        };
+    $scope.checkLogged = function () {
+        console.log("calling checkLogged")
+        if ($rootScope.user == null) {
+            console.log("checkLogged: logging user out!")
+            $state.go('webHome')
+        }
+    }
 
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
-        };
-
-        $scope.login = function () {
-            $state.go('webHome');
         };
 
         if ($rootScope.isLoggedIn) {
@@ -61,7 +67,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         if (window.localStorage['didTutorial'] === "true") {
             //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
             console.log('Skip intro');
-            $state.go('webHome2');
+            $state.go('webHome');
         }
 
         $scope.next = function () {
@@ -134,6 +140,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.error = {};
 
         $scope.login = function () {
+
+
             $scope.loading = $ionicLoading.show({
                 content: 'Logging in',
                 animation: 'fade-in',
@@ -150,7 +158,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                     if (user.get("emailVerified") == false) {
                         alert("Please verify your email: " + user.get("email"));
                     }
-                    $state.go('webHome2', {
+                    $scope.modal.hide();
+                    $state.go('capture', {
                         clear: true
                     });
 
@@ -192,7 +201,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome2');
+                $state.go('webHome');
             } else {
                 $state.go('webHome');
             }
@@ -211,9 +220,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
     })
     .controller('webHome2Controller', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
-        $scope.checkLogged = function () {
-            $scope.startApp();
-        };
+    $scope.checkLogged = function () {
+        console.log("calling checkLogged")
+        if ($rootScope.user == null) {
+            console.log("checkLogged: logging user out!")
+            $scope.logout();
+        }
+    }
 
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
@@ -330,7 +343,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                     if (user.get("emailVerified") == false) {
                         alert("Please verify your email: " + user.get("email"));
                     }
-                    $state.go('webHome2', {
+                    $state.go('capture', {
                         clear: true
                     });
 
@@ -372,7 +385,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome2');
+                $state.go('webHome');
             } else {
                 $state.go('webHome');
             }
@@ -390,8 +403,14 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('Account');
         };
     })
-    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics) {
-
+    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics,$rootScope) {
+    $scope.checkLogged = function () {
+        console.log("calling checkLogged3")
+        if ($rootScope.user == null) {
+            console.log("checkLogged: logging user out!")
+            $state.go('webHome')
+        }
+    }
         $scope.webHome = function () {
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
@@ -413,7 +432,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.Account = function () {
             $state.go('Account');
         };
-    
+
         $scope.uploadFile = function (files) {
             var fd = new FormData();
             fd.append("file", files[0]);
@@ -428,13 +447,20 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                     alert(JSON.stringify(data));
                 })
                 .error(function (err) {
-                    
+
                     alert("bad things: " + JSON.stringify(err))
                     console.log(err);
                 });
         };
     })
     .controller('AccountController', function ($scope, photos, $stateParams, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
+        $scope.checkLogged = function () {
+            console.log("calling checkLogged")
+            if ($rootScope.user == null) {
+                console.log("checkLogged: logging user out!")
+                $scope.logout();
+            }
+        }
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
@@ -444,7 +470,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $rootScope.user = null;
             $rootScope.isLoggedIn = false;
             window.localStorage['rememberme'] = "false";
-            $state.go('intro');
+            $state.go('webHome');
         };
         $scope.refer = "";
         if (Parse.User.current() != null) {
@@ -460,7 +486,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome2');
+                $state.go('webHome');
             } else {
                 $state.go('webHome');
             }
@@ -478,7 +504,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('Account');
         };
     })
-    .controller('AnalyzeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicModal) {
+    .controller('AnalyzeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicModal,$rootScope) {
+    $scope.checkLogged = function () {
+        console.log("calling checkLogged3")
+        if ($rootScope.user == null) {
+            console.log("checkLogged: logging user out!")
+            $state.go('webHome')
+        }
+        else{
+            $scope.doRefresh();
+        }
+    }
         $scope.checkedArr = [];
         $scope.photos = photos.queryNewEntries();
         var saveToParse = function (data) {
@@ -593,7 +629,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome2');
+                $state.go('webHome');
             } else {
                 $state.go('webHome');
             }
