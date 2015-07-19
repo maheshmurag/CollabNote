@@ -186,54 +186,92 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 //         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                 //     });
                 // return notes;
+
+//second algorithim here
+
+                // var words = text.split(" ");
+                // var relevance = (Math.log(words.length/500) / Math.LN10) + 0.9;
+                // //Mathematically modeling the number of notes - kush
+                // console.log("relevance for index: " + relevance);
+
+                // var notes = [];
+                // $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
+                //     .then(function (resp) {
+                //        rawnotes = resp.data;
+                //          for (var i = 0; i < rawnotes.keywords.length; i++) {
+                //              if (rawnotes.keywords[i].relevance > relevance) {
+                //               notes.push(rawnotes.keywords[i]);
+                //               var notesIndex = notes.length - 1;
+                //               notes[notesIndex].relatedConcepts = [];
+                //               $http.get("https://api.idolondemand.com/1/api/sync/findrelatedconcepts/v1?text="+ rawnotes.keywords[i].text + "&apikey=a46a1fd3-0815-41db-a757-d6d981de0fc6")
+                //                 .then(function (resp2) {
+                //                     rawnotes2 =  resp2.data;
+                //                     for (var j = 0; j < 4; j++) {
+                //                         notes[notesIndex].relatedConcepts.push(rawnotes2.entities[j]);
+                //                     }
+                //                 }, function (err) {
+                //                     console.error('ERR', JSON.stringify(err));
+                //                 });
+                //              }
+                //              if ((notes.length-1) == 7) {
+                //                 break;
+                //               }
+                //             }
+                         
+// third algorithim starts here
+
                 var words = text.split(" ");
-                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.9;
+                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.8;
                 //Mathematically modeling the number of notes - kush
                 console.log("relevance for index: " + relevance);
 
                 var notes = [];
-                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedKeywords?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
+
+                alert(text);
+                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                     .then(function (resp) {
-                       rawnotes = resp.data;
-                         for (var i = 0; i < rawnotes.keywords.length; i++) {
-                             if (rawnotes.keywords[i].relevance > relevance) {
-                              notes.push(rawnotes.keywords[i]);
-                              var notesIndex = notes.length - 1;
-                              notes[notesIndex].relatedConcepts = [];
-                              $http.get("https://api.idolondemand.com/1/api/sync/findrelatedconcepts/v1?text="+ rawnotes.keywords[i].text + "&apikey=a46a1fd3-0815-41db-a757-d6d981de0fc6")
-                                .then(function (resp2) {
-                                    rawnotes2 =  resp2.data;
-                                    for (var j = 0; j < 4; j++) {
-                                        notes[notesIndex].relatedConcepts.push(rawnotes2.entities[j]);
-                                    }
-                                }, function (err) {
-                                    console.error('ERR', JSON.stringify(err));
-                                });
-                             }
-                             if ((notes.length-1) == 7) {
-                                break;
-                              }
+                        rawnotes = resp.data;
+                        //go through the top ones to store and put them in the notes array
+                        for (var i = 0; i < rawnotes.entities.length; i++) {
+                            if (rawnotes.entities[i].relevance > relevance) {
+                                notes.push(rawnotes.entities[i]);
+                                notes[notes.length-1].sentences = [];
+                                notes[notes.length-1].subTopics = [];
                             }
-                         
-                    
+                        }
 
-                    // $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
-                    //     .then(function (resp) {
-                    //         rawnotes = resp.data;
-                    //         for (var j = 0; j < rawnotes.entities.length; j++) {
-                    //             if (rawnotes.entities[j].relevance > 0.9) {
-                    //                 if ()
-                    //             }
-                    //         }
+                         $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&keywords=1")
+                            .then(function (resp2) {
+                                rawnotes2 = resp2.data;
+                                for (var x = 0; x < notes.length; x++) {
+                                    for (var j = 0; j < rawnotes2.relations.length; j++) {
+                                        if(rawnotes2.relations[j].subject.hasOwnProperty("keywords")) {
+                                            if (notes[x].text == rawnotes2.relations[j].subject.keywords[0].text) {
 
-                    //     }, function (err) {
-                    //         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
-                    //     });
+
+                                                notes[x].sentences.push(rawnotes2.relations[j].object.text)
+                                                
+                                                if (rawnotes2.relations[j].object.hasOwnProperty("keywords")) {
+
+                                                    for (var b = 0; b < rawnotes2.relations[j].object.keywords.length; b++) {
+
+                                                        notes[x].subTopics.push(rawnotes2.relations[j].subject.keywords[b].text);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }, function (err) {
+                                console.error('ERR', JSON.stringify(err)); //TODO save  to parse
+                            });
+
 
 
                     }, function (err) {
                         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                     });
+               
     
                 return notes;
             },
