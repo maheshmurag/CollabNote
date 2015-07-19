@@ -89,7 +89,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     };
 }])
 
-
 .controller('MainCtrl', function ($scope, Camera, $http) {
     $scope.getPhoto = function () {
         Camera.getPicture().then(function (imageURI) {

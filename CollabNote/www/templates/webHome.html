@@ -7,24 +7,28 @@
     </ion-slide-box>
 </ion-view>-->
 <!-- where the initial view template will be rendered -->
-<ion-nav-view nav-transition="none" >
-    <ion-view  nav-transition="none" ng-init="checkLogged()" class="backgroundweb" hide-nav-bar="true">
+<ion-nav-view nav-transition="none">
+    <ion-view nav-transition="none" ng-init="checkLogged()" class="backgroundweb" hide-nav-bar="true">
 
         <center>
             <div>
                 <div class="button-bar quillcolor" style="width:100%; padding-left:43%; padding-right:10%;">
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl"  ng-click="webHome()" transition="none"><b>Home</b></a></div>
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a></div>
-                    <div style="padding:10px;"><a  nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a></div>
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a></div>
+                    <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="webHome()" transition="none"><b>Home</b></a>
+                    </div>
+                    <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a>
+                    </div>
+                    <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
+                    </div>
+                    <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a>
+                    </div>
                 </div>
-                
+
 
 
                 <div style="width:60%;">
                     <h1 style="font-family: 'Raleway'; font-size:55px; padding-top:5%; color:white">Auxquill</h1>
-                <p style="font-size:20px; color:white;">A student note agregator. We give you the best ntoes from studetns around the world for the piece of text you're reading.
-                </p>
+                    <p style="font-size:20px; color:white;">A student note agregator. We give you the best ntoes from studetns around the world for the piece of text you're reading.
+                    </p>
                     <div class="input-wrapper">
                         <input required type="text" ng-model="user.username" placeholder="Email" style="color:white; font-size:17px; padding-left:10%;" class="introsignup">
                     </div>
@@ -62,11 +66,11 @@
                         <h1 style="color:white;">Improve</h1>
                         <p>Upvote and downvote the helpful summaries and notes. You can also add in your own notes to be added to the total queue. </p>
                     </div>
-</div>
+                </div>
             </div>
         </center>
         <script id="webHome.html" type="text/ng-template">
-            <div class="modal" style="border-radius:10px; background-color:#FF8533;">
+            <div class="modal" style="border-radius:10px; background-color:#686868 ;">
                 <ion-scroll zooming="true" direction="xy" style="width:100%;height:600px">
                     <div style="padding-top:30px;">
                         <div class="button button-clear" ng-click="modal.hide()" style="height:5%; width:5%;"><span class="icon ion-close"></span>
@@ -85,13 +89,17 @@
                             <!--            </label>-->
                             <!--        </div>-->
                             <!--KUSHNOTE ALEX COPY HERE-->
-                            <ion-checkbox class="checkbox checkbox-assertive" style="background-color: rgba(0,0,0,.0); border: 0px solid #F37D52 ">
-                                <h2 style="font-family: 'Raleway'; font-size:20px; color:white;" ng-checked="rememberMe()">Remember me</h2>
-                            </ion-checkbox>
+                            <div style="padding-left:3%;">
+                                <ion-checkbox class="checkbox checkbox-assertive" style="background-color: rgba(0,0,0,.0); border: 0px solid #F37D52;">
+                                    <h2 style="font-family: 'Raleway'; font-size:20px; color:white;" ng-checked="rememberMe()">Remember me</h2>
+                                </ion-checkbox>
+                            </div>
                             <div class="assertive" ng-show="error.message">{{error.message}}</div>
-                            <button class="button button-block button-outline button-assertive" style="height:25%; width:80%; margin-right:auto; margin-left:auto; text-align:center; font-family: 'Raleway'; border:1px solid white; color:white;" ng-click="login()">
-                                LOG IN
-                            </button>
+                            <div style="padding-left:3%;">
+                                <button class="btn btn-primary btn-xl" style="height:25%; width:94%; padding-left:10%; margin-right:auto; margin-left:auto; text-align:center; font-family: 'Raleway'; border:1px solid white; color:white;" ng-click="login()">
+                                    LOG IN
+                                </button>
+                            </div>
                             <button class="button button-block button-clear button-calm" ng-click="forgot()">
                                 Forgot your password?
                             </button>
