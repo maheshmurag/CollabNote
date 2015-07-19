@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'ui.router'])
+angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'ui.router', 'tangcloud'])
 
 .controller('AccountCtrl', function ($scope, $state, $rootScope, $ionicHistory, $stateParams, $ionicModal, $cordovaGoogleAnalytics) {
 
@@ -647,6 +647,11 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         //$scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
         var tmpvar = noteCreation.getNotes($scope.photos[index].text);
         $scope.notes = tmpvar;
+        var typeOfWords = noteCreation.getEntitiesArray($scope.photos[index].text);
+        $scope.positiveWords = typeOfWords[0];
+        $scope.neutralWords = typeOfWords[1];
+        $scope.negativeWords = typeOfWords[2];
+
         var tmpvar = ["Europe of the Scientific Revolution"];
         $scope.videos = videos.retrieveVideoList(tmpvar);
     }

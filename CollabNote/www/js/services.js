@@ -289,8 +289,41 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
 
             getText: function (notes) {
                 return notes.toString();
+            },
+
+            getEntitiesArray: function (text) {
+                alert(text);
+                var positive = [];
+                var negative = [];
+                var neutral = [];
+                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&sentiment=1")
+                 .then(function (resp) {
+                    rawnotes = resp.data;
+                    for (var i = 0; i < rawnotes.entities.length; i++) {
+                        if (i == 20) {
+                            break;
+                        }
+                        objectToAdd = {};
+                        objectToAdd.id = i+1;
+                        objectToAdd.size = Math.round((rawnotes.entities[i].relevance * 10));
+                        objectToAdd.word = rawnotes.entities[i].text + " ";
+                        //console.log("i: " + i + " id: " + objectToAdd.id + " size: " + objectToAdd.size + " words " + objectToAdd.word);
+                         if (rawnotes.entities[i].sentiment.type == "positive") {
+                            positive.push(objectToAdd);
+                         } else if (rawnotes.entities[i].sentiment.type == "neutral") {
+                            neutral.push(objectToAdd);
+                         } else {
+                            negative.push(objectToAdd);
+                         }
+                    }
+                 }, function (err) {
+                    console.error('ERR', JSON.stringify(err));
+                 });
+                 return [positive, neutral, negative];
             }
         }
+
+
 }])
     .service('fileUpload', ['$http', function ($http) {
         this.uploadFileToUrl = function (file, uploadUrl) {

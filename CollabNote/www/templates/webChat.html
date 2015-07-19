@@ -43,6 +43,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+
                         <p style="font-size:16px; line-height:120%;">
                             <b>Text:</b> {{ photos[myIndex].text }}
                         </p>
@@ -100,6 +103,11 @@
                             <a href="#" class="subdued">5 Upvote</a>
                             <a href="#" class="subdued">1 Downvotes</a>
                         </p>
+                        <div style="border:1px solid grey;">
+                        <tang-cloud words="positiveWords"></tang-cloud>
+                         <tang-cloud words="neutralWords"></tang-cloud>
+                        <tang-cloud words="negativeWords"></tang-cloud> 
+                        </div>
                     </div>
 
                     <div class="item tabs tabs-secondary tabs-icon-left">
