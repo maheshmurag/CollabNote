@@ -17,32 +17,57 @@
                     <div class="item item-body">
                         <p style="font-size:16px; line-height:120%;">
                             <b>Summary:</b> {{ photos[myIndex].summary }}
-                            <br>
-                            <a > <img src="http://quillapp.io/plus.png" style="height:25px; width:25px;"></a>
-                            <a > <img src="http://quillapp.io/minus.png" style="height:25px; width:25px;"></a>
-                        </p>
+                            
+                                                            <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small></a>
+                                <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>22</small></a>
 
+                        </p>
+                        <p style="font-size:17px;"><b>Notes: </b>
+                        </p>
+                        <div style="padding-left:3%;" ng-repeat="note in notes">
+                            <ul class="my-nav">
+                                <li style="font-size:17px; color:#686868 ;"><b>{{ note.text }}</b>
+                                                                    <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small></a>
+                                <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>12</small></a>
+
+                                </li>
+                            </ul>
+                            <div id="list" ng-repeat="sentence in note.sentences track by $index">
+                                <div ng-if="sentence">
+                                    <ul class="my-nav" style=" padding-left:20px;">
+                                        <li style="font-size:0.9em; text-align:left; font-size:15px; color:#686868 ;">
+                                            {{ sentence }}</li>
+                                    </ul>
+                                </div>
+                                <div ng-if="!sentence">
+                                </div>
+                            </div>
+                        </div>
                         <p style="font-size:16px; line-height:120%;">
                             <b>Text:</b> {{ photos[myIndex].text }}
                         </p>
-                        <ul class="my-nav" style="padding-left:20px;">
+                        <!-- <ul class="my-nav" style="padding-left:20px;">
                             <p><b>Notes: </b>
                             </p>
                             <li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.text }}
                                 <br>
-                                  <a > <img src="http://quillapp.io/plus.png" style="height:25px; width:25px;"></a>
-                            <a > <img src="http://quillapp.io/minus.png" style="height:25px; width:25px;"></a>
+                                <a class="icon ion-plus" style="color:#33CC00;"> <span style="color:#33CC00;">82</span> </a>
+                                <a class="icon ion-minus"> <span style="color:#FF9980  ">28</span> </a>
+                                <li ng-repeat="sentence in note.sentences track by $index" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.sentence }}
+                                </li>
                             </li>
-                        </ul>
+                        </ul> -->
+
+
                         <p><b>Add Notes: </b> </p>
+
                         <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:100%; padding-right:7%;">
                             <i class="icon placeholder-icon"></i>
-                            <input type="text" style="background-color:#D0D0D0 ; height:50px; border-radius:5px; color:white; font-size:17px; padding-left:10px;" placeholder="Add your note here" >
+                            <input type="text" style="background-color:#D0D0D0 ; height:50px; border-radius:5px; color:white; font-size:17px; padding-left:10px;" placeholder="Add your note here">
                             <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px;">
                                 Add!
                             </button>
                         </label>
-
 
                         <!--<div ng-controller="CollapseDemoCtrl">
                             <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
