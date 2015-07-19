@@ -29,20 +29,16 @@ ul {
 }
 
 .backgroundweb {
-    
-   /* background: -webkit-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);*/
+    /* background: -webkit-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);*/
     /* Chrome 10+, Saf5.1+ */
-    
     /*background: -moz-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* FF3.6+ */
-    
-   /* background: -ms-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* background: -ms-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* IE10 */
-    
-   /* background: -o-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
+    /* background: -o-linear-gradient(70deg, #F3E5AB 1%, #FFA62F 99%);
     /* Opera 11.10+ */
     
-    background:#686868 ;
+    background: #686868 ;
 }
 
 input::-webkit-input-placeholder {
@@ -92,6 +88,13 @@ input::-webkit-input-placeholder {
 
 .input-wrapper {
     position: relative;
+}
+
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+    cursor: pointer;
 }
 
 input {

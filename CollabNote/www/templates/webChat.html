@@ -26,18 +26,30 @@
                             <b>Text:</b> {{ photos[myIndex].text }}
                         </p>
                         <ul class="my-nav" style="padding-left:20px;">
-                            <p><b>Notes: </b></p><li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.text }} <br>
-                            <a class="icon ion-plus"  style="color:#33CC00;"> <span style="color:#33CC00;">82</span> </a>
-                            <a class="icon ion-minus"> <span style="color:#FF9980  ">28</span> </a>
+                            <p><b>Notes: </b>
+                            </p>
+                            <li ng-repeat="note in notes" style="font-family: 'Raleway', 'Hind', sans-serif;">{{ note.text }}
+                                <br>
+                                <a class="icon ion-plus" style="color:#33CC00;"> <span style="color:#33CC00;">82</span> </a>
+                                <a class="icon ion-minus"> <span style="color:#FF9980  ">28</span> </a>
                             </li>
                         </ul>
-                        <p><b>Add Notes: </b><label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:80%;">
-                <i class="icon placeholder-icon"></i>
-                <input type="text" placeholder="Write your note here" style="background-color:#D0D0D0 ; height:50px; border-radius:5px;">
-                           <button class="btn btn-primary btn-xl" style="width:15%; background-color:#33CC00; border:1px solid #41A317; margin:5px;">
-                 Add!
-            </button>
-            </label></p>
+                        <p><b>Add Notes: </b>
+                            <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:80%;">
+                                <i class="icon placeholder-icon"></i>
+                                <input type="text" placeholder="Add your note here" style="background-color:#D0D0D0 ; height:50px; border-radius:5px;">
+                                <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px; ">
+                                   Add!
+                                </button>
+                            </label>
+                        </p>
+                        <!--<div ng-controller="CollapseDemoCtrl">
+                            <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+                            <hr>
+                            <div collapse="isCollapsed">
+                                <div class="well well-lg">Some content</div>
+                            </div>
+                        </div>-->
                         <!--<div class="item item-text-wrap" style="opacity:.9;">
 
                             <div id="list" ng-repeat="note in notes">

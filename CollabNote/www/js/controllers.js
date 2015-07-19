@@ -2,33 +2,33 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
 
 .controller('AccountCtrl', function ($scope, $state, $rootScope, $ionicHistory, $stateParams, $ionicModal, $cordovaGoogleAnalytics) {
 
-        if ($stateParams.clear) {
-            $ionicHistory.clearHistory();
-            $ionicHistory.clearCache();
-        }
-        $scope.logout = function () {
-            Parse.User.logOut();
-            $rootScope.user = null;
-            $rootScope.isLoggedIn = false;
-            window.localStorage['rememberme'] = "false";
-            $state.go('intro');
-        };
-        $scope.refer = "";
-        if (Parse.User.current() != null) {
+    if ($stateParams.clear) {
+        $ionicHistory.clearHistory();
+        $ionicHistory.clearCache();
+    }
+    $scope.logout = function () {
+        Parse.User.logOut();
+        $rootScope.user = null;
+        $rootScope.isLoggedIn = false;
+        window.localStorage['rememberme'] = "false";
+        $state.go('intro');
+    };
+    $scope.refer = "";
+    if (Parse.User.current() != null) {
 
-            $scope.email = Parse.User.current().get("username");
-            $scope.refer = $scope.email;
-            //            var tm = Parse.User.current().get("referredBy");
-            //            $scope.refer = tm.substring(0,tm.indexOf("@"));
-        } else
-            $scope.logout();
-        /*.filter('split', function () {
-            return function (input, splitChar, splitIndex) {
-                // do some bounds checking here to ensure it has that index
-                return input.split(splitChar)[splitIndex];
-            }
-        });*/
-    })
+        $scope.email = Parse.User.current().get("username");
+        $scope.refer = $scope.email;
+        //            var tm = Parse.User.current().get("referredBy");
+        //            $scope.refer = tm.substring(0,tm.indexOf("@"));
+    } else
+        $scope.logout();
+    /*.filter('split', function () {
+        return function (input, splitChar, splitIndex) {
+            // do some bounds checking here to ensure it has that index
+            return input.split(splitChar)[splitIndex];
+        }
+    });*/
+})
 
 .controller('webHomeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
         $scope.checkLogged = function () {
@@ -413,6 +413,25 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.Account = function () {
             $state.go('Account');
         };
+    
+        $scope.uploadFile = function (files) {
+            var fd = new FormData();
+            fd.append("file", files[0]);
+            $http.post("http://collabnote.ethanl.ee/api/1.0/upload", fd, {
+                    headers: {
+                        'Content-Type': undefined
+                    },
+                    withCredentials: false,
+                    transformRequest: angular.identity
+                })
+                .success(function (data) {
+                    alert(JSON.stringify(data));
+                })
+                .error(function (err) {
+                    alert("bad things: " + JSON.stringify(err))
+                    console.log(err);
+                });
+        };
     })
     .controller('AccountController', function ($scope, photos, $stateParams, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
         if ($stateParams.clear) {
@@ -614,13 +633,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.$on('modal.removed', function () {
             // Execute action
         });
-})
+    })
 
 .controller('webchatController', function ($scope, $ionicHistory, $stateParams, photos, Chats, $ionicNavBarDelegate, $ionicModal, noteCreation, videos, summary, spellcheck, $cordovaGoogleAnalytics) {
     $scope.myIndex = $stateParams.chatId;
     $scope.photos = photos.queryNewEntries();
     $scope.numConcepts;
-
+    //$scope.isCollapsed = false;
     $scope.callFunc = function () {
         //alert("Call function");
         var index = $scope.myIndex;

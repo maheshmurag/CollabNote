@@ -11,24 +11,47 @@
     <ion-view nav-transition="none" ng-init="checkLogged()" hide-nav-bar="true" class="backgroundweb">
 
         <center>
-            <div class="button-bar quillcolor" style="width:100%; padding-left:43%; padding-right:10%;">
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl"  ng-click="webHome()" transition="none"><b>Home</b></a></div>
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a></div>
-                    <div style="padding:10px;"><a  nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a></div>
-                    <div style="padding:10px;"><a nav-transition="none"  class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a></div>
+            <div class="button-bar quillcolor" style="width:100%; padding-left:29%; padding-right:10%;">
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="webHome()" transition="none"><b>Home</b></a>
                 </div>
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Capture()" transition="none"><b>Capture</b></a>
+                </div>
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Analyze()" transition="none"><b>Analyze</b></a>
+                </div>
+                <div style="padding:10px;"><a nav-transition="none" class="btn btn-primary btn-xl" ng-click="Account()" transition="none"><b>Account</b></a>
+                </div>
+            </div>
             <h3 style="color:white;">Upload</h3>
-            <button class="btn btn-primary btn-xl" style="width:50%;">
+            <!--<button class="btn btn-primary btn-xl" style="width:50%;">
                 Upload File
-            </button>
+
+            </button>-->
+            <!--<label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:50%;">
+                <form enctype="multipart/form-data">
+                    <input type="file" name="file" accept="application/pdf">
+                    <input class="btn btn-primary btn-xl" type="submit" ng-submit="uploadFile()">
+                </form>
+                
+            </label>-->
+
+            <label class="btn btn-primary btn-xl item-input" style="width:50%;">Select File
+                <form enctype="multipart/form-data">
+                    <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+                </form>
+            </label>
+
             <h3 style="color:white;">Or Insert Link</h3>
 
             <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:50%;">
                 <i class="icon ion-search placeholder-icon"></i>
                 <input type="text" placeholder="Search">
-            </label>
+                </label>
+               
+            
             <h1 style="color:white;">And Analyze</h1>
-
+ <button class="btn btn-primary btn-xl" style="width:50%; background-color:#33CC00; border:1px solid #41A317;">
+                    Go!
+                </button>
             <!--<div class="row">
                 <div class="col col-50">
                     <h1 style="color:white;">Upload Files</h1>
@@ -58,9 +81,7 @@
                 </div>
 
             </div>-->
-            <button class="btn btn-primary btn-xl" style="width:50%; background-color:#33CC00; border:1px solid #41A317;">
-                Go!
-            </button>
+
         </center>
         </ion-slide-box>
     </ion-view>
