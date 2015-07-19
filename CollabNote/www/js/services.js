@@ -186,14 +186,16 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 //         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                 //     });
                 // return notes;
-                var words = text.split(".");
+                var words = text.split(" ");
+                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.9;
+                console.log("relevance for index: " + relevance);
 
                 var notes = [];
                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedKeywords?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                     .then(function (resp) {
                        rawnotes = resp.data;
                          for (var i = 0; i < rawnotes.keywords.length; i++) {
-                             if (rawnotes.keywords[i].relevance > 0.8) {
+                             if (rawnotes.keywords[i].relevance > relevance) {
                               notes.push(rawnotes.keywords[i]);
                               var notesIndex = notes.length - 1;
                               notes[notesIndex].relatedConcepts = [];
@@ -206,7 +208,10 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                                     console.error('ERR', JSON.stringify(err));
                                 });
                              }
-                         }
+                             if ((notes.length-1) == 7) {
+                                break;
+                              }
+                            }
                          
                     
 
