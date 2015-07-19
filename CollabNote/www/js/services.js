@@ -221,7 +221,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
 // third algorithim starts here
 
                 var words = text.split(" ");
-                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.8;
+                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.6;
                 //Mathematically modeling the number of notes - kush
                 console.log("relevance for index: " + relevance);
 
@@ -292,7 +292,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
             },
 
             getEntitiesArray: function (text) {
-                alert(text);
+                //alert(text);
                 var positive = [];
                 var negative = [];
                 var neutral = [];
@@ -306,7 +306,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                         objectToAdd = {};
                         objectToAdd.id = i+1;
                         objectToAdd.size = Math.round((rawnotes.entities[i].relevance * 10));
-                        objectToAdd.word = rawnotes.entities[i].text + " ";
+                        objectToAdd.word = rawnotes.entities[i].text + "      ";
                         //console.log("i: " + i + " id: " + objectToAdd.id + " size: " + objectToAdd.size + " words " + objectToAdd.word);
                          if (rawnotes.entities[i].sentiment.type == "positive") {
                             positive.push(objectToAdd);

@@ -11,15 +11,17 @@
                     <div class="item item-avatar">
                         <img src="http://msharboursclass.weebly.com/uploads/4/1/9/6/4196620/harcourt273.jpg">
                         <h2>{{ photos[myIndex].summary }}</h2>
-                        <p>{{ photos[myIndex].time | date }}</p>
+                        <p>July 19, 2015</p>
                     </div>
 
                     <div class="item item-body">
                         <p style="font-size:16px; line-height:120%;">
                             <b>Summary:</b> {{ photos[myIndex].summary }}
-                            
-                                                            <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small></a>
-                                <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>22</small></a>
+
+                            <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small>
+                            </a>
+                            <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>22</small>
+                            </a>
 
                         </p>
                         <p style="font-size:17px;"><b>Notes: </b>
@@ -27,8 +29,10 @@
                         <div style="padding-left:3%;" ng-repeat="note in notes">
                             <ul class="my-nav">
                                 <li style="font-size:17px; color:#686868 ;"><b>{{ note.text }}</b>
-                                                                    <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small></a>
-                                <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>12</small></a>
+                                    <a class="btn btn-primary btn-xs" style='background-color:#44d62c;'> <img src="http://quillapp.io/Plus2.png" style="height:8px; width:8px;"> <small>122</small>
+                                    </a>
+                                    <a class="btn btn-primary btn-xs" style='background-color:#f93822;'> <img src="http://quillapp.io/minus2.png" style="height:8px; width:8px;"> <small>12</small>
+                                    </a>
 
                                 </li>
                             </ul>
@@ -44,11 +48,9 @@
                             </div>
                         </div>
 
-                        
 
-                        <p style="font-size:16px; line-height:120%;">
-                            <b>Text:</b> {{ photos[myIndex].text }}
-                        </p>
+
+                        
                         <!-- <ul class="my-nav" style="padding-left:20px;">
                             <p><b>Notes: </b>
                             </p>
@@ -62,15 +64,6 @@
                         </ul> -->
 
 
-                        <p><b>Add Notes: </b> </p>
-
-                        <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:100%; padding-right:7%;">
-                            <i class="icon placeholder-icon"></i>
-                            <input type="text" style="background-color:#D0D0D0 ; height:50px; border-radius:5px; color:white; font-size:17px; padding-left:10px;" placeholder="Add your note here">
-                            <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px;">
-                                Add!
-                            </button>
-                        </label>
 
                         <!--<div ng-controller="CollapseDemoCtrl">
                             <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
@@ -99,28 +92,42 @@
 
                             </div>
                         </div>-->
-                        <p>
+                        
+                        <p><b>Word Cloud: </b></p>
+                            <tang-cloud words="positiveWords" style="color:green; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+                            <tang-cloud words="neutralWords" style="color:orange; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+                            <tang-cloud words="negativeWords" style="color:red; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+                        
+                        <br>
+                        <iframe src="http://beam.la" style="width:100%; height:500px;"></iframe>
+                        <br>
+                        <p style="font-size:16px; line-height:120%;">
+                            <b>Text:</b> {{ photos[myIndex].text }}
+                        </p>
+                        <p><b>Add Notes: </b> </p>
+
+                        <label class="item item-input" style="background-color:rgba(255, 255, 255, .3); width:100%; padding-right:7%;">
+                            <i class="icon placeholder-icon"></i>
+                            <input type="text" style="background-color:#D0D0D0 ; height:50px; border-radius:5px; color:white; font-size:17px; padding-left:10px;" placeholder="Add your note here">
+                            <button class="btn btn-primary btn-xl" style="width:25%; background-color:#33CC00; border:1px solid #41A317; margin:5px;">
+                                Add!
+                            </button>
+                        </label>
+<p>
                             <a href="#" class="subdued">5 Upvote</a>
                             <a href="#" class="subdued">1 Downvotes</a>
                         </p>
-                        <div style="border:1px solid grey;">
-                        <tang-cloud words="positiveWords"></tang-cloud>
-                         <tang-cloud words="neutralWords"></tang-cloud>
-                        <tang-cloud words="negativeWords"></tang-cloud> 
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i> Accurate
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsdown"></i> Inaccurate
+                            </a>
+
                         </div>
-                    </div>
-
-                    <div class="item tabs tabs-secondary tabs-icon-left">
-                        <a class="tab-item" href="#">
-                            <i class="icon ion-thumbsup"></i> Accurate
-                        </a>
-                        <a class="tab-item" href="#">
-                            <i class="icon ion-thumbsdown"></i> Inaccurate
-                        </a>
 
                     </div>
-
-                </div>
 
                 </div>
             </ion-item>

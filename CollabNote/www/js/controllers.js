@@ -428,6 +428,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                     alert(JSON.stringify(data));
                 })
                 .error(function (err) {
+                    
                     alert("bad things: " + JSON.stringify(err))
                     console.log(err);
                 });
