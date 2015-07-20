@@ -150,6 +150,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                     if (user.get("emailVerified") == false) {
                         alert("Please verify your email: " + user.get("email"));
                     }
+                    $scope.modal.hide();
                     $state.go('webHome2', {
                         clear: true
                     });
