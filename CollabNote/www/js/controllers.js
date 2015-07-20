@@ -152,8 +152,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             var user = $scope.user;
             Parse.User.logIn(("" + user.email).toLowerCase(), "" + user.password, {
                 success: function (user) {
+                    console.log(user);
+                    console.log("We're logging in with the first version of this");
                     $ionicLoading.hide();
-                    $rootScope.user = user;
+                    $rootScope.loggedUser = user;
                     $rootScope.isLoggedIn = true;
                     if (user.get("emailVerified") == false) {
                         alert("Please verify your email: " + user.get("email"));
@@ -338,6 +340,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             Parse.User.logIn(("" + user.email).toLowerCase(), "" + user.password, {
                 success: function (user) {
                     $ionicLoading.hide();
+                    console.log("We logged in!");
+                    console.log(user);
                     $rootScope.user = user;
                     $rootScope.isLoggedIn = true;
                     if (user.get("emailVerified") == false) {
@@ -350,6 +354,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                 },
                 error: function (user, err) {
                     $ionicLoading.hide();
+                    console.log("BAD STUFF: " + err);
                     $scope.error.message = err.message;
                     $scope.$apply();
                 }
@@ -403,6 +408,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('Account');
         };
     })
+<<<<<<< Updated upstream
     .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics,$rootScope) {
     $scope.checkLogged = function () {
         console.log("calling checkLogged3")
@@ -411,6 +417,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('webHome')
         }
     }
+=======
+    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
+
+>>>>>>> Stashed changes
         $scope.webHome = function () {
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
@@ -434,8 +444,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.uploadFile = function (files) {
+            console.log($rootScope.loggedUser);
             var fd = new FormData();
             fd.append("file", files[0]);
+            fd.append("user", "");
             $http.post("http://collabnote.ethanl.ee/api/1.0/upload", fd, {
                     headers: {
                         'Content-Type': undefined
