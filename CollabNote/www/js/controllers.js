@@ -34,6 +34,27 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             return input.split(splitChar)[splitIndex];
         }
     });*/
+        $scope.webHome = function () {
+            if (window.localStorage['didTutorial'] === "true") {
+                //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
+                console.log('Skip intro');
+                $state.go('webHome2');
+            } else {
+                $state.go('webHome');
+            }
+        };
+
+        $scope.Capture = function () {
+            $state.go('capture');
+        };
+
+        $scope.Analyze = function () {
+            $state.go('analyze');
+        };
+
+        $scope.Account = function () {
+            $state.go('Account');
+        };
 })
 
 .controller('webHomeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
@@ -161,11 +182,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
                         alert("Please verify your email: " + user.get("email"));
                     }
                     $scope.modal.hide();
-<<<<<<< HEAD
-                    $state.go('webHome2', {
-=======
+
                     $state.go('capture', {
->>>>>>> origin/master
                         clear: true
                     });
 
@@ -207,7 +225,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome');
+                $state.go('webHome2');
             } else {
                 $state.go('webHome');
             }
@@ -394,7 +412,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome');
+                $state.go('webHome2');
             } else {
                 $state.go('webHome');
             }
@@ -412,7 +430,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('Account');
         };
     })
-<<<<<<< Updated upstream
     .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics,$rootScope) {
     $scope.checkLogged = function () {
         console.log("calling checkLogged3")
@@ -421,10 +438,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             $state.go('webHome')
         }
     }
-=======
-    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
 
->>>>>>> Stashed changes
         $scope.webHome = function () {
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
@@ -645,7 +659,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome');
+                $state.go('webHome2');
             } else {
                 $state.go('webHome');
             }
