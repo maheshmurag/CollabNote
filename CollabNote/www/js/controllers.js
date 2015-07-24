@@ -516,7 +516,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             if (window.localStorage['didTutorial'] === "true") {
                 //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
                 console.log('Skip intro');
-                $state.go('webHome');
+                $state.go('webHome2');
             } else {
                 $state.go('webHome');
             }
