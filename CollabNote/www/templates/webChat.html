@@ -50,7 +50,7 @@
 
 
 
-                        
+
                         <!-- <ul class="my-nav" style="padding-left:20px;">
                             <p><b>Notes: </b>
                             </p>
@@ -92,12 +92,27 @@
 
                             </div>
                         </div>-->
-                        
-                        <p><b>Word Cloud: </b></p>
-                            <tang-cloud words="positiveWords" style="color:green; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
-                            <tang-cloud words="neutralWords" style="color:orange; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
-                            <tang-cloud words="negativeWords" style="color:red; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
-                        
+
+                        <p><b>Word Cloud: </b>
+                        </p>
+                        <div id="word-cloud">
+
+                            <tang-cloud  words="positiveWords"  class="word-1"></tang-cloud>
+                            <tang-cloud words="negativeWords" class="word-7"></tang-cloud>
+                            <tang-cloud  words="neutralWords" class="word-9"></tang-cloud>
+                            <span class="word-4">jquery</span>
+                            <span class="word-5">javascript</span>
+                            <span class="word-6">xml</span>
+                            <span class="word-2">html5</span>
+                            <span class="word-8">html6</span>
+                            <span class="word-3">html7</span>
+
+                        </div>
+
+                        <tang-cloud words="positiveWords" style="color:green; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+                        <tang-cloud words="neutralWords" style="color:orange; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+                        <tang-cloud words="negativeWords" style="color:red; line-height:200%; font-size:28px; text-align:center; weight:bold; width:60%;"></tang-cloud>
+
                         <br>
                         <iframe src="http://beam.la" style="width:100%; height:500px;"></iframe>
                         <br>
@@ -113,7 +128,7 @@
                                 Add!
                             </button>
                         </label>
-<p>
+                        <p>
                             <a href="#" class="subdued">5 Upvote</a>
                             <a href="#" class="subdued">1 Downvotes</a>
                         </p>

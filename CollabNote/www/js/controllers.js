@@ -651,6 +651,11 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.notes = tmpvar;
         var typeOfWords = noteCreation.getEntitiesArray($scope.photos[index].text);
         $scope.positiveWords = typeOfWords[0];
+        alert($scope.positiveWords);
+        var posWords = $scope.positiveWords.split(" ");
+        alert(posWords);
+        $scope.positiveWords = posWords[0];
+        alert(posWords[0]);
         $scope.neutralWords = typeOfWords[1];
         $scope.negativeWords = typeOfWords[2];
 
