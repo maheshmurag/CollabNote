@@ -327,6 +327,8 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 var entitiesPerArticle = 3;
 //                 $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-30d&end=now&outputMode=json&count=25&q.enriched.url.title=A[apple^watch]&return=enriched.url.url,enriched.url.title
 // ")
+//how i finally decide to do it:
+//get a timescore, entity --> final score = match it with top 5 articles score -->top 5 articles
             }
         }
 
