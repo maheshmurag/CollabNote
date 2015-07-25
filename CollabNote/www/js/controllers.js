@@ -714,7 +714,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         //$scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
         var tmpvar = noteCreation.getNotes($scope.photos[index].text);
         $scope.notes = tmpvar;
-        var typeOfWords = noteCreation.getEntitiesArray($scope.photos[index].text);
+        var typeOfWords = noteCreation.getWordCloudArray($scope.photos[index].text);
         $scope.positiveWords = typeOfWords[0];
         alert($scope.positiveWords);
         var posWords = $scope.positiveWords.split(" ");
