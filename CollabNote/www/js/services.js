@@ -291,7 +291,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 return notes.toString();
             },
 
-            getEntitiesArray: function (text) {
+            getWordCloudArray: function (text) {
                 //alert(text);
                 var positive = [];
                 var negative = [];
@@ -320,6 +320,22 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                     console.error('ERR', JSON.stringify(err));
                  });
                  return [positive, neutral, negative];
+            },
+
+            getArticlesArray: function (text,notes) {
+                var conceptsPerArticle = 2;
+                var entitiesPerArticle = 3;
+//                 $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-30d&end=now&outputMode=json&count=25&q.enriched.url.title=A[apple^watch]&return=enriched.url.url,enriched.url.title
+// ")
+//how i finally decide to do it:
+//get the ranked entities --> put in the appropro queries EXCEPT for timestamp
+//timestamp = last 3 months, any important articles + second timestamp = recent articles IFF recent articles have ALL the other queryfields matched (change this later as in during the weekend) 
+//if ^ that is less that 5 articles, extend timestamp to 12months, and if not, extend to 3 years. otherwise leave articleNumber as is.
+//THEN, for eac article, provide short description that shows, publication date, author, top concepts, sentiment (change color of title) AND option
+//to view text --> pop up model that extracts the text with text extraction API from alchemy WITH highlighted areas of importance
+//provide option to share/save the article AND go to the article in web browser
+
+
             }
         }
 

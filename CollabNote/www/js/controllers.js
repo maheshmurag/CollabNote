@@ -707,13 +707,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         //$scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
         var tmpvar = noteCreation.getNotes($scope.photos[index].text);
         $scope.notes = tmpvar;
-        var typeOfWords = noteCreation.getEntitiesArray($scope.photos[index].text);
-        for (var i = 0; i < typeOfWords[0].length - 3; i++) {
-            typeOfWords[0].shift();
-            alert(typeOfWords[0]);
-        }
-        alert(typeOfWords[0].length);
-        alert(typeOfWords[0]);
+        var typeOfWords = noteCreation.getWordCloudArray($scope.photos[index].text);
+
         $scope.positiveWords = typeOfWords[0];
         console.log("SCOPE POSSITIVE WORDS" + $scope.positiveWords);
         //alert($scope.positiveWords);
