@@ -51,8 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'AnalyzeController'
     })
 
-    .state('Account', {
-        url: '/Account',
+    .state('account', {
+        url: '/account',
         templateUrl: 'templates/Account.html',
         controller: 'AccountController'
     })

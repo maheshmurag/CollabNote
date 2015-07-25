@@ -34,37 +34,37 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             return input.split(splitChar)[splitIndex];
         }
     });*/
-        $scope.webHome = function () {
-            if (window.localStorage['didTutorial'] === "true") {
-                //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
-                console.log('Skip intro');
-                $state.go('webHome2');
-            } else {
-                $state.go('webHome');
-            }
-        };
+    $scope.webHome = function () {
+        if (window.localStorage['didTutorial'] === "true") {
+            //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
+            console.log('Skip intro');
+            $state.go('webHome2');
+        } else {
+            $state.go('webHome');
+        }
+    };
 
-        $scope.Capture = function () {
-            $state.go('capture');
-        };
+    $scope.Capture = function () {
+        $state.go('capture');
+    };
 
-        $scope.Analyze = function () {
-            $state.go('analyze');
-        };
+    $scope.Analyze = function () {
+        $state.go('analyze');
+    };
 
-        $scope.Account = function () {
-            $state.go('Account');
-        };
+    $scope.Account = function () {
+        $state.go('account');
+    };
 })
 
 .controller('webHomeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
-    $scope.checkLogged = function () {
-        console.log("calling checkLogged")
-        if ($rootScope.user == null) {
-            console.log("checkLogged: logging user out!")
-            $state.go('webHome')
+        $scope.checkLogged = function () {
+            console.log("calling checkLogged")
+            if ($rootScope.user == null) {
+                console.log("checkLogged: logging user out!")
+                $state.go('webHome')
+            }
         }
-    }
 
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
@@ -72,15 +72,15 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         if ($rootScope.isLoggedIn) {
-            $state.go('webHome');
+            $state.go('webHome2');
         }
 
         $scope.startApp = function () {
             if (window.localStorage['rememberme'] == "true") {
-                $state.go('webHome');
+                $state.go('webHome2');
             } else {
                 //DECIDES THE OPENING PAGE
-                $state.go('webHome');
+                $state.go('webHome2');
                 window.localStorage['didTutorial'] = true;
             }
         };
@@ -88,7 +88,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         if (window.localStorage['didTutorial'] === "true") {
             //DOES THIS AGAIN. THINK IT'S BECAUSE OUR DID TUTORIAL SHIT IS KIND OF A LITTLE BIT VERY FUCKED UP
             console.log('Skip intro');
-            $state.go('webHome');
+            $state.go('webHome2');
         }
 
         $scope.next = function () {
@@ -161,8 +161,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         $scope.error = {};
 
         $scope.login = function () {
-
-
             $scope.loading = $ionicLoading.show({
                 content: 'Logging in',
                 animation: 'fade-in',
@@ -173,17 +171,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             var user = $scope.user;
             Parse.User.logIn(("" + user.email).toLowerCase(), "" + user.password, {
                 success: function (user) {
-                    console.log(user);
-                    console.log("We're logging in with the first version of this");
                     $ionicLoading.hide();
-                    $rootScope.loggedUser = user;
+                    $rootScope.user = user;
                     $rootScope.isLoggedIn = true;
                     if (user.get("emailVerified") == false) {
                         alert("Please verify your email: " + user.get("email"));
                     }
-                    $scope.modal.hide();
-
-                    $state.go('capture', {
+                    $state.go('tab.chats', {
                         clear: true
                     });
 
@@ -240,17 +234,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.Account = function () {
-            $state.go('Account');
+            $state.go('account');
         };
     })
     .controller('webHome2Controller', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicSlideBoxDelegate, $rootScope, $ionicHistory, $ionicModal, $stateParams) {
-    $scope.checkLogged = function () {
-        console.log("calling checkLogged")
-        if ($rootScope.user == null) {
-            console.log("checkLogged: logging user out!")
-            $scope.logout();
+        $scope.checkLogged = function () {
+            console.log("calling checkLogged")
+            if ($rootScope.user == null) {
+                console.log("checkLogged: logging user out!")
+                $scope.logout();
+            }
         }
-    }
 
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
@@ -427,17 +421,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.Account = function () {
-            $state.go('Account');
+            $state.go('account');
         };
     })
-    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics,$rootScope) {
-    $scope.checkLogged = function () {
-        console.log("calling checkLogged3")
-        if ($rootScope.user == null) {
-            console.log("checkLogged: logging user out!")
-            $state.go('webHome')
+    .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
+        $scope.checkLogged = function () {
+            console.log("calling checkLogged3")
+            if ($rootScope.user == null) {
+                console.log("checkLogged: logging user out!")
+                $state.go('webHome')
+            }
         }
-    }
 
         $scope.webHome = function () {
             if (window.localStorage['didTutorial'] === "true") {
@@ -458,7 +452,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.Account = function () {
-            $state.go('Account');
+            $state.go('account');
         };
 
         $scope.uploadFile = function (files) {
@@ -484,13 +478,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
     })
     .controller('AccountController', function ($scope, photos, $stateParams, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
-        $scope.checkLogged = function () {
+        /*$scope.checkLogged = function () {
             console.log("calling checkLogged")
             if ($rootScope.user == null) {
                 console.log("checkLogged: logging user out!")
                 $scope.logout();
             }
-        }
+        }*/
         if ($stateParams.clear) {
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
@@ -531,20 +525,19 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.Account = function () {
-            $state.go('Account');
+            $state.go('account');
         };
     })
-    .controller('AnalyzeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicModal,$rootScope) {
-    $scope.checkLogged = function () {
-        console.log("calling checkLogged3")
-        if ($rootScope.user == null) {
-            console.log("checkLogged: logging user out!")
-            $state.go('webHome')
+    .controller('AnalyzeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicModal, $rootScope) {
+        $scope.checkLogged = function () {
+            console.log("calling checkLogged3")
+            if ($rootScope.user == null) {
+                console.log("checkLogged: logging user out!")
+                $state.go('webHome')
+            } else {
+                $scope.doRefresh();
+            }
         }
-        else{
-            $scope.doRefresh();
-        }
-    }
         $scope.checkedArr = [];
         $scope.photos = photos.queryNewEntries();
         var saveToParse = function (data) {
@@ -674,7 +667,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
 
         $scope.Account = function () {
-            $state.go('Account');
+            $state.go('account');
         };
         $ionicModal.fromTemplateUrl('analyze.html', {
             scope: $scope,
@@ -715,12 +708,19 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         var tmpvar = noteCreation.getNotes($scope.photos[index].text);
         $scope.notes = tmpvar;
         var typeOfWords = noteCreation.getEntitiesArray($scope.photos[index].text);
+        for (var i = 0; i < typeOfWords[0].length - 3; i++) {
+            typeOfWords[0].shift();
+            alert(typeOfWords[0]);
+        }
+        alert(typeOfWords[0].length);
+        alert(typeOfWords[0]);
         $scope.positiveWords = typeOfWords[0];
-        alert($scope.positiveWords);
-        var posWords = $scope.positiveWords.split(" ");
-        alert(posWords);
-        $scope.positiveWords = posWords[0];
-        alert(posWords[0]);
+        console.log("SCOPE POSSITIVE WORDS" + $scope.positiveWords);
+        //alert($scope.positiveWords);
+        //var posWords = $scope.positiveWords.split(" ");
+        //alert(posWords);
+        //$scope.positiveWords = posWords[0];
+        //alert(posWords[0]);
         $scope.neutralWords = typeOfWords[1];
         $scope.negativeWords = typeOfWords[2];
 
