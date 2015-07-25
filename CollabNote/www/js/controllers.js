@@ -425,13 +425,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
     })
     .controller('captureController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $rootScope) {
-        $scope.checkLogged = function () {
+        /*$scope.checkLogged = function () {
             console.log("calling checkLogged3")
             if ($rootScope.user == null) {
                 console.log("checkLogged: logging user out!")
                 $state.go('webHome')
             }
-        }
+        }*/
 
         $scope.webHome = function () {
             if (window.localStorage['didTutorial'] === "true") {
@@ -529,7 +529,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         };
     })
     .controller('AnalyzeController', function ($scope, photos, $cordovaSocialSharing, $ionicLoading, $http, $ionicActionSheet, $cordovaFile, $cordovaCamera, $ionicPopup, Upload, $cordovaFileTransfer, $state, spellcheck, noteCreation, $cordovaGoogleAnalytics, $ionicModal, $rootScope) {
-        $scope.checkLogged = function () {
+        /*$scope.checkLogged = function () {
             console.log("calling checkLogged3")
             if ($rootScope.user == null) {
                 console.log("checkLogged: logging user out!")
@@ -537,7 +537,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
             } else {
                 $scope.doRefresh();
             }
-        }
+        }*/
         $scope.checkedArr = [];
         $scope.photos = photos.queryNewEntries();
         var saveToParse = function (data) {
