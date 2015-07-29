@@ -710,14 +710,21 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         var typeOfWords = noteCreation.getWordCloudArray($scope.photos[index].text);
 
         $scope.positiveWords = typeOfWords[0];
+        $scope.positiveWords2 = typeOfWords[1];
+        $scope.positiveWords3 = typeOfWords[2];
         console.log("SCOPE POSSITIVE WORDS" + $scope.positiveWords);
         //alert($scope.positiveWords);
         //var posWords = $scope.positiveWords.split(" ");
         //alert(posWords);
         //$scope.positiveWords = posWords[0];
         //alert(posWords[0]);
-        $scope.neutralWords = typeOfWords[1];
-        $scope.negativeWords = typeOfWords[2];
+        $scope.neutralWords = typeOfWords[3];
+        $scope.neutralWords2 = typeOfWords[4];
+        $scope.neutralWords3 = typeOfWords[5];
+        $scope.negativeWords = typeOfWords[6];
+        $scope.negativeWords2 = typeOfWords[7];
+        $scope.negativeWords3 = typeOfWords[8];
+        
 
         var tmpvar = ["Europe of the Scientific Revolution"];
         $scope.videos = videos.retrieveVideoList(tmpvar);

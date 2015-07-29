@@ -1,6 +1,6 @@
 angular.module('starter.services', ['ionic', 'ngCordova'])
 
-    .factory('Chats', function () {
+.factory('Chats', function () {
         // Might use a resource here that returns a JSON array
 
         // Some fake testing data
@@ -145,7 +145,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
         var ret = {};
         return {
             getNotes: function (text) {
-               // var notes = [];
+                // var notes = [];
 
                 // $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedConcepts?apikey=f0c8d163d48994fedc40c29311f3c068e2d531f2&text=" + text + "&outputMode=json")
                 //     .then(function (resp) {
@@ -187,7 +187,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 //     });
                 // return notes;
 
-//second algorithim here
+                //second algorithim here
 
                 // var words = text.split(" ");
                 // var relevance = (Math.log(words.length/500) / Math.LN10) + 0.9;
@@ -217,11 +217,11 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 //                 break;
                 //               }
                 //             }
-                         
-// third algorithim starts here
+
+                // third algorithim starts here
 
                 var words = text.split(" ");
-                var relevance = (Math.log(words.length/500) / Math.LN10) + 0.6;
+                var relevance = (Math.log(words.length / 500) / Math.LN10) + 0.6;
                 //Mathematically modeling the number of notes - kush
                 console.log("relevance for index: " + relevance);
 
@@ -235,22 +235,22 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                         for (var i = 0; i < rawnotes.entities.length; i++) {
                             if (rawnotes.entities[i].relevance > relevance) {
                                 notes.push(rawnotes.entities[i]);
-                                notes[notes.length-1].sentences = [];
-                                notes[notes.length-1].subTopics = [];
+                                notes[notes.length - 1].sentences = [];
+                                notes[notes.length - 1].subTopics = [];
                             }
                         }
 
-                         $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&keywords=1")
+                        $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&keywords=1")
                             .then(function (resp2) {
                                 rawnotes2 = resp2.data;
                                 for (var x = 0; x < notes.length; x++) {
                                     for (var j = 0; j < rawnotes2.relations.length; j++) {
-                                        if(rawnotes2.relations[j].subject.hasOwnProperty("keywords")) {
+                                        if (rawnotes2.relations[j].subject.hasOwnProperty("keywords")) {
                                             if (notes[x].text == rawnotes2.relations[j].subject.keywords[0].text) {
 
 
                                                 notes[x].sentences.push(rawnotes2.relations[j].object.text)
-                                                
+
                                                 if (rawnotes2.relations[j].object.hasOwnProperty("keywords")) {
 
                                                     for (var b = 0; b < rawnotes2.relations[j].object.keywords.length; b++) {
@@ -271,15 +271,15 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                     }, function (err) {
                         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                     });
-               
-    
+
+
                 return notes;
             },
             getNumConcepts: function () {
                 return notes.length;
             },
             retNotes2: function (ind) {
-//                alert(' 2');
+                //                alert(' 2');
                 return notes2[ind];
             },
             getNotesForConcepts: function (index) {
@@ -294,51 +294,95 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
             getWordCloudArray: function (text) {
                 //alert(text);
                 var positive = [];
+                var positive2 = [];
+                var positive3 = [];
                 var negative = [];
+                var negative2 = [];
+                var negative3 = [];
                 var neutral = [];
-                 $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&sentiment=1")
-                 .then(function (resp) {
-                    rawnotes = resp.data;
-                    for (var i = 0; i < rawnotes.entities.length; i++) {
-                        if (i == 20) {
-                            break;
+                var neutral2 = [];
+                var neutral3 = [];
+                var a = 0;
+                var b = 0;
+                var c = 0;
+                var d = 0;
+                var e = 0;
+                var f = 0;
+                var g = 0;
+                var h = 0;
+                var i = 0;
+                
+$http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&sentiment=1")
+                    .then(function (resp) {
+                        rawnotes = resp.data;
+                        for (var i = 0; i < rawnotes.entities.length; i++) {
+                            if (i == 20) {
+                                break;
+                            }
+                            objectToAdd = {};
+                            objectToAdd.id = i + 1;
+                            objectToAdd.size = Math.round((rawnotes.entities[i].relevance * 10));
+                            objectToAdd.word = rawnotes.entities[i].text + "      ";
+                            //console.log("i: " + i + " id: " + objectToAdd.id + " size: " + objectToAdd.size + " words " + objectToAdd.word);
+                            /*else if (rawnotes.entities[i].sentiment.type == "positive" && i == 1) {
+                                positive2.push(objectToAdd);
+                                i++;
+                                alert(i);
+                            } else if (rawnotes.entities[i].sentiment.type == "positive" && i == 2) {
+                                positive3.push(objectToAdd);
+                                i++;
+                            } */
+                            if (rawnotes.entities[i].sentiment.type == "positive" && a == 0) {
+                                positive.push(objectToAdd);
+                                a++;
+                            } else if (rawnotes.entities[i].sentiment.type == "positive" && b == 0) {
+                                positive2.push(objectToAdd);
+                                b++;
+                            } else if (rawnotes.entities[i].sentiment.type == "positive" && c == 0) {
+                                positive3.push(objectToAdd);
+                                c++;
+                            } else if (rawnotes.entities[i].sentiment.type == "neutral" && d == 0) {
+                                neutral.push(objectToAdd);
+                                d++;
+                            } else if (rawnotes.entities[i].sentiment.type == "neutral" && e == 0) {
+                                neutral2.push(objectToAdd);
+                                e++;
+                            } else if (rawnotes.entities[i].sentiment.type == "neutral" && f == 0) {
+                                neutral3.push(objectToAdd);
+                                f++;
+                            } else if (rawnotes.entities[i].sentiment.type == "negative" && g == 0) {
+                                negative.push(objectToAdd);
+                                g++;
+                            } else if (rawnotes.entities[i].sentiment.type == "negative" && h == 0) {
+                                negative2.push(objectToAdd);
+                                h++;
+                            } else {
+                                negative3.push(objectToAdd);
+                            }
                         }
-                        objectToAdd = {};
-                        objectToAdd.id = i+1;
-                        objectToAdd.size = Math.round((rawnotes.entities[i].relevance * 10));
-                        objectToAdd.word = rawnotes.entities[i].text + "      ";
-                        //console.log("i: " + i + " id: " + objectToAdd.id + " size: " + objectToAdd.size + " words " + objectToAdd.word);
-                         if (rawnotes.entities[i].sentiment.type == "positive") {
-                            positive.push(objectToAdd);
-                         } else if (rawnotes.entities[i].sentiment.type == "neutral") {
-                            neutral.push(objectToAdd);
-                         } else {
-                            negative.push(objectToAdd);
-                         }
-                    }
-                 }, function (err) {
-                    console.error('ERR', JSON.stringify(err));
-                 });
-                 return [positive, neutral, negative];
+                    }, function (err) {
+                        console.error('ERR', JSON.stringify(err));
+                    });
+                return [positive, positive2, positive3, neutral, neutral2, neutral3, negative, negative2, negative3];
             },
 
-            getArticlesArray: function (text,notes) {
+            getArticlesArray: function (text, notes) {
                 var numberConceptsToQuery = 1;
                 var countOfArticles = 5;
                 var conceptsPerArticle = 2;
                 var entitiesPerArticle = 3;
                 var firstTimeStamp = "180d";
                 var recentTimeStamp = "7d";
-                var articles[];
-    //                 $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-30d&end=now&outputMode=json&count=25&q.enriched.url.title=A[apple^watch]&return=enriched.url.url,enriched.url.title
-    // ")
-    //how i finally decide to do it:
-    //get the ranked entities --> put in the appropro queries EXCEPT for timestamp
-    //timestamp = last 6 months, any important articles + second timestamp = recent articles IFF recent articles have ALL the other queryfields matched (change this later as in during the weekend) 
-    //if ^ that is less that 5 articles, extend timestamp to 12months, and if not, extend to 3 years. otherwise leave articleNumber as is.
-    //THEN, for eac article, provide short description that shows, publication date, author, top concepts, sentiment (change color of title) AND option
-    //to view text --> pop up model that extracts the text with text extraction API from alchemy WITH highlighted areas of importance
-    //provide option to share/save the article AND go to the article in web browser
+                var articles = [];
+                //                 $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-30d&end=now&outputMode=json&count=25&q.enriched.url.title=A[apple^watch]&return=enriched.url.url,enriched.url.title
+                // ")
+                //how i finally decide to do it:
+                //get the ranked entities --> put in the appropro queries EXCEPT for timestamp
+                //timestamp = last 6 months, any important articles + second timestamp = recent articles IFF recent articles have ALL the other queryfields matched (change this later as in during the weekend) 
+                //if ^ that is less that 5 articles, extend timestamp to 12months, and if not, extend to 3 years. otherwise leave articleNumber as is.
+                //THEN, for eac article, provide short description that shows, publication date, author, top concepts, sentiment (change color of title) AND option
+                //to view text --> pop up model that extracts the text with text extraction API from alchemy WITH highlighted areas of importance
+                //provide option to share/save the article AND go to the article in web browser
 
                 // var queries[];
                 // for(var x = 0; x < numberConceptsToQuery; x++) {

@@ -398,6 +398,7 @@ h3 {
  left: 1.5em;
  font-size: 100px;
  color: #626262;
+ margin:20px;
 }
 
 #word-cloud .word-2 {
@@ -405,13 +406,17 @@ h3 {
  left: 1em;
  font-size: 80px;
  color: #906060;
+ margin:20px;
+
 }
 
 #word-cloud .word-3 {
- top: 1em;
- left: 1.5em;
- font-size: 60px;
+ top: 1.5em;
+ left: 2.5em;
+ font-size: 40px;
  color: #c5c5c5;
+ margin:20px;
+
 }
 
 #word-cloud .word-4 {
@@ -422,6 +427,8 @@ h3 {
  -moz-transform: rotate(-90deg);
  -webkit-transform: rotate(-90deg);
  -o-transform: rotate(-90deg);
+ margin:20px;
+
 }
 
 #word-cloud .word-5 {
@@ -432,6 +439,8 @@ h3 {
  -moz-transform: rotate(-90deg);
  -webkit-transform: rotate(-90deg);
  -o-transform: rotate(-90deg);
+ margin:20px;
+
 }
 
 #word-cloud .word-6 {
@@ -439,6 +448,8 @@ h3 {
  right: 1.4em;
  color: #5e0000;
  font-size: 120px;
+ margin:20px;
+
 }
 
 #word-cloud .word-7 {
@@ -449,18 +460,22 @@ h3 {
  -moz-transform: rotate(-90deg);
  -webkit-transform: rotate(-90deg);
  -o-transform: rotate(-90deg);
+ margin:20px;
+
 }
 #word-cloud .word-8 {
- top: 3.2em;
- left: 2.5em;
+ top: 4.2em;
+ left: 5.5em;
  font-size: 60px;
  color: #c5c5c5;
 }
 #word-cloud .word-9 {
  top: 1.4em;
- left: 4.5em;
+ left: 6.5em;
  font-size: 50px;
  color: #c5c5c5;
+ margin:20px;
+
 }
 
 .toolbutton{
