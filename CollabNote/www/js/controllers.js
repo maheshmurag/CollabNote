@@ -705,19 +705,26 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         var index = $scope.myIndex;
         $scope.photos = photos.queryNewEntries();
         //$scope.photos[index].summary = "" + summary.summarize($scope.photos[index].text);
-        var tmpvar = noteCreation.getNotes($scope.photos[index].text);
+        var tmpvar = noteCreation.getNotes($scope.photos[index].text);       
         $scope.notes = tmpvar;
+        //$scope.articles = noteCreation.getArticlesArray($scope.photos[index].text);
+
+
         var typeOfWords = noteCreation.getWordCloudArray($scope.photos[index].text);
 
         $scope.positiveWords = typeOfWords[0];
         $scope.positiveWords2 = typeOfWords[1];
         $scope.positiveWords3 = typeOfWords[2];
         console.log("SCOPE POSSITIVE WORDS" + $scope.positiveWords);
-        //alert($scope.positiveWords);
-        //var posWords = $scope.positiveWords.split(" ");
-        //alert(posWords);
-        //$scope.positiveWords = posWords[0];
-        //alert(posWords[0]);
+
+
+        alert($scope.positiveWords);
+        var posWords = $scope.positiveWords.split(" ");
+        alert(posWords);
+        $scope.positiveWords = posWords[0];
+        alert(posWords[0]);
+
+
         $scope.neutralWords = typeOfWords[3];
         $scope.neutralWords2 = typeOfWords[4];
         $scope.neutralWords3 = typeOfWords[5];

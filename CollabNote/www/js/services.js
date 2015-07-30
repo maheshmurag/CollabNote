@@ -223,24 +223,25 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 var words = text.split(" ");
                 var relevance = (Math.log(words.length / 500) / Math.LN10) + 0.6;
                 //Mathematically modeling the number of notes - kush
-                console.log("relevance for index: " + relevance);
+                //console.log("relevance for index: " + relevance);
 
                 var notes = [];
 
                 //alert(text);
-                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json")
+                $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                     .then(function (resp) {
                         rawnotes = resp.data;
                         //go through the top ones to store and put them in the notes array
                         for (var i = 0; i < rawnotes.entities.length; i++) {
                             if (rawnotes.entities[i].relevance > relevance) {
                                 notes.push(rawnotes.entities[i]);
+                                
                                 notes[notes.length - 1].sentences = [];
                                 notes[notes.length - 1].subTopics = [];
                             }
                         }
 
-                        $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&keywords=1")
+                        $http.get("http://access.alchemyapi.com/calls/text/TextGetRelations?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&keywords=1")
                             .then(function (resp2) {
                                 rawnotes2 = resp2.data;
                                 for (var x = 0; x < notes.length; x++) {
@@ -255,7 +256,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
 
                                                     for (var b = 0; b < rawnotes2.relations[j].object.keywords.length; b++) {
 
-                                                        notes[x].subTopics.push(rawnotes2.relations[j].subject.keywords[b].text);
+                                                        //notes[x].subTopics.push(rawnotes2.relations[j].subject.keywords[b].text);
                                                     }
                                                 }
                                             }
@@ -271,7 +272,6 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                     }, function (err) {
                         console.error('ERR', JSON.stringify(err)); //TODO save  to parse
                     });
-
 
                 return notes;
             },
@@ -312,7 +312,7 @@ angular.module('starter.services', ['ionic', 'ngCordova'])
                 var h = 0;
                 var i = 0;
                 
-$http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&text=" + text + "&outputMode=json&sentiment=1")
+$http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json&sentiment=1")
                     .then(function (resp) {
                         rawnotes = resp.data;
                         for (var i = 0; i < rawnotes.entities.length; i++) {
@@ -366,59 +366,81 @@ $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?ap
                 return [positive, positive2, positive3, neutral, neutral2, neutral3, negative, negative2, negative3];
             },
 
-            getArticlesArray: function (text, notes) {
-                var numberConceptsToQuery = 1;
-                var countOfArticles = 5;
-                var conceptsPerArticle = 2;
-                var entitiesPerArticle = 3;
-                var firstTimeStamp = "180d";
-                var recentTimeStamp = "7d";
-                var articles = [];
-                //                 $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-30d&end=now&outputMode=json&count=25&q.enriched.url.title=A[apple^watch]&return=enriched.url.url,enriched.url.title
-                // ")
-                //how i finally decide to do it:
+            getArticlesArray: function (text) {
+                   //how i finally decide to do it:
                 //get the ranked entities --> put in the appropro queries EXCEPT for timestamp
                 //timestamp = last 6 months, any important articles + second timestamp = recent articles IFF recent articles have ALL the other queryfields matched (change this later as in during the weekend) 
                 //if ^ that is less that 5 articles, extend timestamp to 12months, and if not, extend to 3 years. otherwise leave articleNumber as is.
                 //THEN, for eac article, provide short description that shows, publication date, author, top concepts, sentiment (change color of title) AND option
                 //to view text --> pop up model that extracts the text with text extraction API from alchemy WITH highlighted areas of importance
                 //provide option to share/save the article AND go to the article in web browser
+                // var numberConceptsToQuery = 1;
+                // var countOfArticles = 5;
+                // var conceptsPerArticle = 2;
+                // var entitiesPerArticle = 3;
+                // var firstTimeStamp = "180d";
+                // var recentTimeStamp = "30d";
+                // var articles = [];
+                // var notes = [];
 
-                // var queries[];
-                // for(var x = 0; x < numberConceptsToQuery; x++) {
-                //     queries.push(notes[x].nextProperty());
-                // }
-                // //todo: add the query + optimize the nextProperty() to workwith the queries
-                // //todo: add the stuff into webChat.html so it shows into the div + add the pop up modal
-                // // - kushnote
-                // $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=2caf1d6439b2ff5593bdaf31ec03919f937c3a56&start=now-" + firstTimeStamp + "&end=now&outputMode=json&count=" + countOfArticles + "&q.enriched.url.title=" + ___addQueriesHere___ + "&return=enriched.url.url,enriched.url.title,enriched.url.author,enriched.url.docSentiment,enriched.url.entities,enriched.url.concepts")
+                // $http.get("http://access.alchemyapi.com/calls/text/TextGetRankedNamedEntities?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&text=" + text + "&outputMode=json")
                 // .then(function (resp) {
                 //     rawnotes = resp.data;
-                //     for(var i = 0; i < rawnotes.length; i++) {
-                //         objectToAdd = {};
-                //         var conceptsToAdd[];
-                //         var entitiesToAdd[];
-                //         for (var j = 0; j < conceptsPerArticle; j++) {
-                //             conceptsToAdd.push(rawnotes[i].concepts[j]);
+                //     for (var i = 0; i < rawnotes.entities.length; i++) {
+                //         if(rawnotes.entities[i].relevance > 0.4) {
+                //             notes.push(rawnotes.entities[i]);
                 //         }
-                //         objectToAdd.concepts = conceptsToAdd;
-                //         for (var a = 0; a < entitiesPerArticle; a++) {
-                //             entitiesToAdd.push(rawnotes[i].entities[a]);
-                //         }
-                //         objectToAdd.url = rawnotes[i].url;
-                //         objectToAdd.author = rawnotes[i].author;
-                //         objectToAdd.title = rawnotes[i].title;
-                //         //objectToAdd.text = call text exrtraction api here;
-
-
-
-                //         articles.push(objectToAdd);
-                //         console.log(articles.length);
                 //     }
-                // }, function (err) {
+
+
+                //     var titleArray ="";
+                //     var typeArray =""
+                //     for (var i = 0; i < notes.length; i++) {
+                //         if(i != 0) {
+                //             if ( i != 1 ) {
+                //                 titleArray+= "^";
+                //                 typeArray+="^";
+                //             } 
+                //             titleArray+=notes[i].text;
+                //             typeArray+=notes[i].type;
+                //         }
+                //     }
+                //     // console.log("entity 1 name: " + notes[0].text);
+                //     // console.log("entity 1 type: " + notes[0].type);
+                //     // console.log("titleArray: +" + titleArray);
+                //     //get the title or statement
+                //     //api call -->
+                //     $http.get("https://access.alchemyapi.com/calls/data/GetNews?apikey=548454e0bd01102e1bf9345dbfc22536cd2abd36&return=enriched.url.title,enriched.url.url,enriched.url.author,enriched.url.publicationDate,enriched.url.enrichedTitle.entities,enriched.url.enrichedTitle.docSentiment,enriched.url.enrichedTitle.concepts&start=now-" + firstTimeStamp + "&end=now&q.enriched.url.enrichedTitle.entities.entity=|text="+notes[0].text+",type="+notes[0].type+"|&q.enriched.url.title=notes[0].text&q.enriched.url.text="+titleArray+"&count=5&outputMode=json")
+                //     .then(function (response) {
+                //             rawarticles = response.data;
+                //             console.log(JSON.stringify(response.data)); 
+                //             // for(var x = 0; x < rawarticles.result.docs.length; x++) {
+                //             //     objectToAdd = {};
+                //             //     var conceptsToAdd[];
+                //             //     var entitiesToAdd[];
+                //             //     for (var j = 0; j < conceptsPerArticle; j++) {
+                //             //         conceptsToAdd.push(rawarticles.result.docs[x].concepts[j]);
+                //             //     }
+                //             //     objectToAdd.concepts = conceptsToAdd;
+                //             //     for (var a = 0; a < entitiesPerArticle; a++) {
+                //             //         entitiesToAdd.push(rawarticles[x].entities[a]);
+                //             //     }
+                //             //     objectToAdd.url = rawarticles.result.docs[x].url;
+                //             //     objectToAdd.author = rawarticles.result.docs[x].author;
+                //             //     objectToAdd.title = rawarticles.result.docs[x].title;
+                //             //      objectToAdd.publicationDate = rawarticles.results.docs[x].publicationDate;
+                //             //     //objectToAdd.text = call text exrtraction api here;
+                //             //     articles.push(objectToAdd);
+                //             //     //console.log(articles.length);
+                //             // }
+                //     }, function (err) {
                 //     console.error('ERR', JSON.stringify(err));
                 // }); 
-                // return articles;
+                // //console.log("hi heres the titleArray: " + typeArray);
+
+                // }, function (err) {
+                //     console.error('ERR' + JSON.stringify(err));
+                // });
             }
         }
 }])
