@@ -713,6 +713,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services',
         var typeOfWords = noteCreation.getWordCloudArray($scope.photos[index].text);
 
         $scope.positiveWords = typeOfWords[0];
+        //$scope.positiveWords = positiveWords.word;
         $scope.positiveWords2 = typeOfWords[1];
         $scope.positiveWords3 = typeOfWords[2];
         console.log("SCOPE POSSITIVE WORDS" + $scope.positiveWords);

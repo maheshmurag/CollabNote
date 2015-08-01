@@ -316,7 +316,7 @@ h3 {
 
 /** tangcloud styling starts here*/
 
-
+/*
 .tangcloud {
     padding-left:15%;
     width: 70%;
@@ -324,7 +324,7 @@ h3 {
 
 .tangcloud span {
     line-height: 100%;
-}
+}*/
 /*
 .tangcloud-item-1 {
     font-size: 1.3em;
@@ -381,8 +381,8 @@ h3 {
 }*/
 
 #word-cloud {
- width: 500px;
- height: 350px;
+ width: 100%;
+ /*height: 350px;*/
  margin: 0 auto;
  padding: 2em 0;
  font: 100% 'Yanone Kaffeesatz', Arial, sans-serif;
@@ -394,85 +394,81 @@ h3 {
 }
 
 #word-cloud .word-1 {
- top: 1em;
- left: 1.5em;
- font-size: 100px;
+ top: 0em;
+ left: 0em;
+ font-size: 40px;
  color: #626262;
  margin:20px;
 }
 
 #word-cloud .word-2 {
  top: 0;
- left: 1em;
- font-size: 80px;
+ left: 40%;
+ font-size: 35px;
  color: #906060;
  margin:20px;
 
 }
 
 #word-cloud .word-3 {
- top: 1.5em;
- left: 2.5em;
- font-size: 40px;
+ top: 5%;
+ left: 0em;
+ font-size: 20px;
  color: #c5c5c5;
  margin:20px;
 
 }
 
 #word-cloud .word-4 {
- top: 1em;
- left: 0;
+ top: 5%;
+ left: 60%;
  font-size: 40px;
  color: #511c1c;
- -moz-transform: rotate(-90deg);
- -webkit-transform: rotate(-90deg);
- -o-transform: rotate(-90deg);
  margin:20px;
-
 }
 
 #word-cloud .word-5 {
- top: 1.5em;
- right: -0.3em;
+ top: 10%;
+ /*right: -0.3em;*/
  color: #666;
- font-size: 70px;
- -moz-transform: rotate(-90deg);
+ font-size: 35px;
+ /*-moz-transform: rotate(-90deg);
  -webkit-transform: rotate(-90deg);
- -o-transform: rotate(-90deg);
+ -o-transform: rotate(-90deg);*/
  margin:20px;
 
 }
 
 #word-cloud .word-6 {
- bottom: 0;
- right: 1.4em;
+ top:10%;
+ left:50%;
  color: #5e0000;
- font-size: 120px;
+ font-size: 20px;
  margin:20px;
 
 }
 
 #word-cloud .word-7 {
- bottom: 0.6em;
+ top: 15%;
  left: 0;
  color: #6e6e6e;
- font-size: 90px;
- -moz-transform: rotate(-90deg);
+ font-size: 40px;
+ /*-moz-transform: rotate(-90deg);
  -webkit-transform: rotate(-90deg);
- -o-transform: rotate(-90deg);
+ -o-transform: rotate(-90deg);*/
  margin:20px;
 
 }
 #word-cloud .word-8 {
- top: 4.2em;
- left: 5.5em;
- font-size: 60px;
+ top: 15%;
+ left: 45%;
+ font-size: 35px;
  color: #c5c5c5;
 }
 #word-cloud .word-9 {
- top: 1.4em;
- left: 6.5em;
- font-size: 50px;
+ top: 20%;
+ left: 20%;
+ font-size: 20px;
  color: #c5c5c5;
  margin:20px;
 
@@ -488,4 +484,57 @@ h3 {
     float:center;
     text-align:center;
     
+}
+.up1{
+    color:#49FF4F;
+    font-size:60px;
+    margin:15px;
+}
+.up2{
+    color:#49FF4F;
+    font-size:45px;
+    margin:15px;
+  
+}
+.up3{
+    color:#49FF4F;
+    font-size:30px;
+    margin:15px;
+
+}
+.norm1{
+    color:#FFD849;
+    font-size:60px;
+    margin:15px;
+
+}
+.norm2{
+    color:#FFD849;
+    font-size:45px;
+    margin:15px;
+
+}
+.norm3{
+    color:#FFD849;
+    font-size:30px;
+    margin:15px;
+
+}
+.down1{
+    color:#FF6849;
+    font-size:60px;
+    margin:15px;
+
+}
+.down2{
+    color:#FF6849;
+    font-size:45px;
+    margin:15px;
+
+}
+.down3{
+    color:#FF6849;
+    font-size:30px;
+    margin:15px;
+
 }
