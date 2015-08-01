@@ -486,55 +486,64 @@ h3 {
     
 }
 .up1{
-    color:#49FF4F;
+    color:#44E649;
     font-size:60px;
     margin:15px;
+    line-height:90%;
 }
 .up2{
-    color:#49FF4F;
+    color:#44E649;
     font-size:45px;
     margin:15px;
-  
+    line-height:90%;
+
 }
 .up3{
-    color:#49FF4F;
+    color:#44E649;
     font-size:30px;
     margin:15px;
+    line-height:90%;
 
 }
 .norm1{
     color:#FFD849;
     font-size:60px;
     margin:15px;
+    line-height:90%;
 
 }
 .norm2{
     color:#FFD849;
     font-size:45px;
     margin:15px;
+    line-height:90%;
 
 }
 .norm3{
     color:#FFD849;
     font-size:30px;
     margin:15px;
+    line-height:90%;
 
 }
 .down1{
     color:#FF6849;
     font-size:60px;
     margin:15px;
+    line-height:90%;
 
 }
 .down2{
     color:#FF6849;
     font-size:45px;
     margin:15px;
+    line-height:90%;
 
 }
 .down3{
     color:#FF6849;
     font-size:30px;
     margin:15px;
+    line-height:90%;
 
 }
