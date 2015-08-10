@@ -23,9 +23,10 @@
 
 
                 <div style="width:60%;"> 
-                    <h1 style="font-family: 'Raleway'; font-size:55px; padding-top:5%; color:white">CollabNote</h1>
-                    <p style="font-size:20px; color:white;">A student note aggregator. We give you the best notes from students around the world for the piece of text you're reading.
-                    </p>
+                    <h1 style="font-family: 'Raleway'; font-size:55px; padding-top:5%; color:white">Quill</h1>
+                <p style="font-size:20px; color:white; line-height:150%;">A student note aggregator. We give you the best notes from students around the world for the piece of text you're reading.
+                </p>
+                <br>
                     <div class="input-wrapper">
                         <input required type="text" ng-model="user.username" placeholder="Email" style="color:white; font-size:17px; padding-left:10%;" class="introsignup">
                     </div>
@@ -47,23 +48,8 @@
                         </a>
                     </p>
                 </div>
-                <div style="padding-left:20%;">
-                    <div class="col-lg-3 col-md-6" style="color:white;">
-                        <img src="http://quillapp.io/introcamera.png" style="width:25%; height:25%;">
-                        <h1 style="color:white;">Upload</h1>
-                        <p>Upload the files and information you want analyzed.</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6" style="color:white;">
-                        <img src="http://quillapp.io/intronote.png" style="width:25%; height:25%;">
-                        <h1 style="color:white;">Analyze</h1>
-                        <p>Our algorithms will analyze the information you uploaded and provide you with the most important notes and summaries.</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6" style="color:white;">
-                        <img src="https://s-media-cache-ak0.pinimg.com/originals/b7/c0/2b/b7c02b413a641483ee0f43ea0a695dc1.png" style="width:25%; height:25%;">
-                        <h1 style="color:white;">Improve</h1>
-                        <p>Upvote and downvote the helpful summaries and notes. You can also add in your own notes to be added to the total queue. </p>
-                    </div>
-                </div>
+                 <h1 style="color:white;"><a ng-click="Capture()"  style="margin:65px;"><img src="http://quillapp.io/introcamera.png" style="width:60px; height:60px;"></a><a ng-click="Analyze()"  style="margin:65px;"><img src="http://quillapp.io/intronote.png" style="width:60px; height:60px;"></a><a ng-click="Analyze()"  style="margin:65px;"><img src="https://s-media-cache-ak0.pinimg.com/originals/b7/c0/2b/b7c02b413a641483ee0f43ea0a695dc1.png" style="width:60px; height:60px;"></a></h1>
+                <h1 style="color:white;"><a ng-click="Capture()" style="margin:30px; color:white;">Upload</a><a ng-click="Analyze()" style="margin:30px; color:white;">Analyze</a><a ng-click="Analyze()"  style="margin:30px; color:white;">Improve</a></h1>
             </div>
         </center>
         <script id="webHome.html" type="text/ng-template">
